@@ -1,0 +1,709 @@
+<title>Veronika Tóth PMU</title>
+<meta name="description" content="Permanentný make-up v Nitre — obočie, pery, laserové odstránenie a kurzy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
+
+<style>
+  :root {
+    /* light palette */
+    --paper:   #FAF7F1;
+    --cream:   #F1E9DB;
+    --cream-2: #E8DCC8;
+    --ink:     #201B15;
+    --ink-soft:#5C5347;
+    --line:    #E2D8C6;
+    --gold:    #B08A4F;
+    --gold-deep:#8F6D36;
+    --gold-soft:#CBAB6E;
+
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans:  "Jost", "Helvetica Neue", Arial, sans-serif;
+
+    --wrap: 1180px;
+    --gutter: clamp(20px, 5vw, 64px);
+    --nav-h: 74px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:   #16120E;
+      --cream:   #201A14;
+      --cream-2: #2A2219;
+      --ink:     #F1E9DA;
+      --ink-soft:#B7A996;
+      --line:    #362C21;
+      --gold:    #C7A25E;
+      --gold-deep:#DBBB79;
+      --gold-soft:#9E7F49;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:   #16120E;
+    --cream:   #201A14;
+    --cream-2: #2A2219;
+    --ink:     #F1E9DA;
+    --ink-soft:#B7A996;
+    --line:    #362C21;
+    --gold:    #C7A25E;
+    --gold-deep:#DBBB79;
+    --gold-soft:#9E7F49;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; text-wrap: balance; letter-spacing: .01em; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 34px; height: 1px;
+    background: var(--gold);
+    display: inline-block;
+  }
+  .eyebrow.center { justify-content: center; }
+
+  .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+
+  /* ---------- NAV ---------- */
+  header.nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    height: var(--nav-h);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 14px; cursor: pointer; }
+  .monogram {
+    width: 42px; height: 42px; border-radius: 50%;
+    border: 1px solid var(--gold);
+    display: grid; place-items: center;
+    font-family: var(--serif); font-size: 19px; color: var(--gold-deep);
+    letter-spacing: .04em;
+  }
+  .brand-name { font-family: var(--serif); font-size: 20px; line-height: 1.05; }
+  .brand-name small { display: block; font-family: var(--sans); font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-soft); font-weight: 400; margin-top: 3px; }
+
+  nav.links { display: flex; align-items: center; gap: 30px; }
+  nav.links button {
+    background: none; border: 0; cursor: pointer;
+    font-family: var(--sans); font-size: 13px; font-weight: 400;
+    letter-spacing: .08em; color: var(--ink-soft);
+    padding: 6px 0; position: relative;
+    transition: color .25s ease;
+  }
+  nav.links button::after {
+    content: ""; position: absolute; left: 0; bottom: -2px;
+    width: 100%; height: 1px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+  }
+  nav.links button:hover { color: var(--ink); }
+  nav.links button.active { color: var(--ink); }
+  nav.links button.active::after { transform: scaleX(1); }
+
+  .nav-cta {
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    border: 1px solid var(--ink); color: var(--ink);
+    padding: 11px 20px; border-radius: 100px;
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--paper); }
+
+  .menu-toggle { display: none; background: none; border: 0; cursor: pointer; color: var(--ink); padding: 8px; }
+  .menu-toggle svg { display: block; }
+
+  /* ---------- VIEWS ---------- */
+  main { display: block; }
+  .view { display: none; animation: fade .5s ease both; }
+  .view.active { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .view { animation: none; } * { scroll-behavior: auto !important; } }
+
+  section { padding-block: clamp(56px, 8vw, 104px); }
+  .section-cream { background: var(--cream); }
+
+  /* ---------- HERO ---------- */
+  .hero { padding-top: clamp(40px, 6vw, 72px); }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+  .hero h1 { font-size: clamp(46px, 7vw, 84px); line-height: 1.02; font-weight: 500; margin: 22px 0 24px; }
+  .hero h1 em { font-style: italic; color: var(--gold-deep); }
+  .hero p.lead { font-size: 18px; color: var(--ink-soft); max-width: 44ch; margin: 0 0 34px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--sans); font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+    padding: 15px 28px; border-radius: 100px; cursor: pointer; border: 1px solid transparent;
+    transition: transform .2s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-solid { background: var(--gold); color: #1c1710; }
+  .btn-solid:hover { background: var(--gold-soft); }
+  .btn-ghost { border-color: var(--ink); color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+  /* image placeholders */
+  .frame { position: relative; border-radius: 2px; overflow: hidden; }
+  .frame::after {
+    content: ""; position: absolute; inset: 12px; border: 1px solid rgba(255,255,255,.35); pointer-events: none;
+  }
+  .ph {
+    background:
+      radial-gradient(120% 90% at 20% 15%, var(--gold-soft) 0%, transparent 55%),
+      linear-gradient(150deg, var(--cream-2) 0%, var(--gold) 130%);
+    position: relative;
+  }
+  .ph.tall { aspect-ratio: 4/5; }
+  .ph.square { aspect-ratio: 1/1; }
+  .ph.wide { aspect-ratio: 3/2; }
+  .ph .ph-label {
+    position: absolute; left: 20px; bottom: 18px; z-index: 2;
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: #221b12; background: color-mix(in srgb, var(--paper) 82%, transparent);
+    padding: 6px 12px; border-radius: 100px;
+  }
+  .ph svg.motif { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .28; mix-blend-mode: overlay; }
+
+  .hero-meta {
+    display: flex; gap: 40px; margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--line);
+  }
+  .hero-meta .m strong { font-family: var(--serif); font-size: 30px; font-weight: 500; display: block; color: var(--ink); }
+  .hero-meta .m span { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+
+  /* pillars */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border-block: 1px solid var(--line); }
+  .pillar { background: var(--paper); padding: 40px clamp(20px,3vw,40px); }
+  .section-cream .pillar { background: var(--cream); }
+  .pillar h3 { font-size: 24px; margin-bottom: 8px; }
+  .pillar p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+  .pillar .num { font-family: var(--serif); font-style: italic; color: var(--gold-deep); font-size: 18px; }
+
+  /* generic heads */
+  .head { max-width: 640px; margin-bottom: clamp(38px, 5vw, 60px); }
+  .head.center { margin-inline: auto; text-align: center; }
+  .head h2 { font-size: clamp(34px, 5vw, 54px); line-height: 1.06; margin: 18px 0 0; }
+
+  /* about */
+  .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px,5vw,72px); align-items: center; }
+  .about-grid p { color: var(--ink-soft); margin: 0 0 18px; max-width: 56ch; }
+  .about-grid p.big { font-family: var(--serif); font-size: 24px; line-height: 1.4; color: var(--ink); font-style: italic; }
+  .sig { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--gold-deep); margin-top: 24px; }
+
+  /* services */
+  .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+  .svc {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 3px;
+    padding: 34px; display: flex; flex-direction: column; gap: 14px;
+    transition: border-color .3s ease, transform .3s ease;
+  }
+  .section-cream .svc { background: var(--paper); }
+  .svc:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .svc .idx { font-family: var(--serif); font-style: italic; color: var(--gold-deep); font-size: 20px; }
+  .svc h3 { font-size: 27px; }
+  .svc p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+  .svc .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .svc .tags span { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); border: 1px solid var(--line); padding: 5px 11px; border-radius: 100px; }
+
+  /* price */
+  .price-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .price-row {
+    display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: baseline;
+    padding: 22px 4px; border-bottom: 1px solid var(--line);
+  }
+  .price-row .name { font-family: var(--serif); font-size: 23px; }
+  .price-row .desc { display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-soft); margin-top: 3px; letter-spacing: .02em; }
+  .price-row .amt { font-family: var(--serif); font-size: 23px; color: var(--gold-deep); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .price-note { margin-top: 24px; font-size: 13px; color: var(--ink-soft); }
+
+  /* gallery */
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .gallery .frame { grid-column: span 1; }
+  .gallery .frame.big { grid-column: span 2; grid-row: span 2; }
+
+  /* references */
+  .refs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .ref {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 3px; padding: 32px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .section-cream .ref { background: var(--paper); }
+  .ref .stars { color: var(--gold); letter-spacing: 3px; font-size: 14px; }
+  .ref blockquote { margin: 0; font-family: var(--serif); font-size: 20px; line-height: 1.45; font-style: italic; }
+  .ref .who { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+  .ref .who .av { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-soft), var(--cream-2)); display: grid; place-items: center; font-family: var(--serif); color: #22190f; font-size: 16px; }
+  .ref .who .n { font-size: 14px; }
+  .ref .who .n small { display: block; color: var(--ink-soft); font-size: 12px; letter-spacing: .04em; }
+
+  /* contact */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,64px); }
+  .contact-info .row { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
+  .contact-info .row:first-child { border-top: 1px solid var(--line); }
+  .contact-info .row .k { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-deep); width: 120px; flex: none; padding-top: 4px; }
+  .contact-info .row .v { font-size: 17px; }
+  .contact-info .row .v small { display:block; color: var(--ink-soft); font-size: 14px; }
+
+  form.contact { display: grid; gap: 16px; }
+  form.contact label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); display: block; margin-bottom: 6px; }
+  form.contact input, form.contact textarea {
+    width: 100%; background: var(--paper); border: 1px solid var(--line); border-radius: 3px;
+    padding: 13px 15px; font-family: var(--sans); font-size: 15px; color: var(--ink);
+  }
+  .section-cream form.contact input, .section-cream form.contact textarea { background: var(--paper); }
+  form.contact input:focus, form.contact textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: transparent; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* footer */
+  footer {
+    background: var(--ink); color: var(--paper);
+    padding-block: 60px 40px;
+  }
+  footer .f-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; align-items: flex-start; }
+  footer .monogram { border-color: var(--gold-soft); color: var(--gold-soft); }
+  footer .brand-name { color: var(--paper); }
+  footer .brand-name small { color: rgba(255,255,255,.6); }
+  footer nav { display: flex; flex-wrap: wrap; gap: 22px; }
+  footer nav button { background: none; border: 0; color: rgba(255,255,255,.7); cursor: pointer; font-family: var(--sans); font-size: 13px; letter-spacing: .06em; transition: color .2s ease; }
+  footer nav button:hover { color: var(--gold-soft); }
+  footer .f-bottom { margin-top: 44px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.14); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: rgba(255,255,255,.5); letter-spacing: .04em; }
+
+  .theme-toggle {
+    background: none; border: 1px solid var(--line); color: var(--ink-soft); cursor: pointer;
+    width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .theme-toggle:hover { border-color: var(--gold); color: var(--gold-deep); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 860px) {
+    .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero .frame { order: -1; max-width: 460px; }
+    .pillars { grid-template-columns: 1fr; }
+    .services, .refs { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .gallery .frame.big { grid-column: span 2; grid-row: span 1; }
+
+    nav.links, .nav-cta { display: none; }
+    .menu-toggle { display: inline-flex; }
+    nav.links.open {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+      position: absolute; top: var(--nav-h); left: 0; right: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      padding: 14px var(--gutter) 24px;
+    }
+    nav.links.open button { font-size: 16px; padding: 10px 0; }
+    nav.links.open button::after { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-meta { flex-wrap: wrap; gap: 24px; }
+  }
+</style>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand" data-go="uvod" role="button" tabindex="0" aria-label="Domov">
+      <span class="monogram">VT</span>
+      <span class="brand-name">Veronika&nbsp;Tóth<small>Permanent make-up</small></span>
+    </div>
+    <nav class="links" id="navlinks">
+      <button data-go="uvod" class="active">Úvod</button>
+      <button data-go="omne">O mne</button>
+      <button data-go="sluzby">Služby</button>
+      <button data-go="cennik">Cenník</button>
+      <button data-go="galeria">Galéria</button>
+      <button data-go="referencie">Referencie</button>
+      <button data-go="kontakt">Kontakt</button>
+    </nav>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <button class="theme-toggle" id="themeBtn" aria-label="Prepnúť tému" title="Prepnúť tému">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <a class="nav-cta" data-go="kontakt" href="#kontakt">Objednať sa</a>
+      <button class="menu-toggle" id="menuBtn" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= ÚVOD ================= -->
+  <div class="view active" id="uvod">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Permanentný make-up · Nitra</span>
+          <h1>Prirodzená krása,<br><em>ktorá vydrží.</em></h1>
+          <p class="lead">Precízny permanentný make-up obočia a pier so zameraním na jemný, prirodzený výsledok. Estetika, bezpečnosť a vzdelávanie na najvyššej úrovni.</p>
+          <div class="hero-actions">
+            <a class="btn btn-solid" data-go="kontakt" href="#kontakt">Objednať termín</a>
+            <a class="btn btn-ghost" data-go="sluzby" href="#sluzby">Pozrieť služby</a>
+          </div>
+          <div class="hero-meta">
+            <div class="m"><strong>8+</strong><span>rokov praxe</span></div>
+            <div class="m"><strong>2000+</strong><span>spokojných klientok</span></div>
+            <div class="m"><strong>5.0</strong><span>hodnotenie</span></div>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="ph tall">
+            <svg class="motif" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice"><g stroke="#3a2c15" stroke-width="1.2" fill="none" opacity=".8"><path d="M60 210 q80 -55 180 -18"/><path d="M70 224 q80 -46 170 -14"/><path d="M180 300 q60 26 130 4"/></g></svg>
+            <span class="ph-label">Studio · Nitra</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-cream" style="padding-block: 0;">
+      <div class="pillars">
+        <div class="pillar"><span class="num">01</span><h3>Estetika</h3><p>Návrh tvaru na mieru vašej tvári — jemne, symetricky, prirodzene.</p></div>
+        <div class="pillar"><span class="num">02</span><h3>Bezpečnosť</h3><p>Certifikované pigmenty, sterilné jednorazové nástroje a hygiena bez kompromisov.</p></div>
+        <div class="pillar"><span class="num">03</span><h3>Vzdelávanie</h3><p>Akreditované kurzy a školenia pre začiatočníčky aj pokročilé.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="head center">
+          <span class="eyebrow center">Čo ponúkam</span>
+          <h2>Služby pre váš prirodzený vzhľad</h2>
+        </div>
+        <div class="services">
+          <div class="svc" data-go="sluzby" style="cursor:pointer">
+            <span class="idx">01</span><h3>Obočie</h3>
+            <p>Powderbrows pre jemný púdrový efekt alebo Hairstrokes s realistickými vláskami.</p>
+            <div class="tags"><span>Powderbrows</span><span>Hairstrokes</span></div>
+          </div>
+          <div class="svc" data-go="sluzby" style="cursor:pointer">
+            <span class="idx">02</span><h3>Pery</h3>
+            <p>Metóda Classy Lips — prirodzené dotvorenie kontúry a oživenie farby pier.</p>
+            <div class="tags"><span>Classy Lips</span></div>
+          </div>
+          <div class="svc" data-go="sluzby" style="cursor:pointer">
+            <span class="idx">03</span><h3>Laserové odstránenie</h3>
+            <p>Šetrné odstránenie starého alebo nevyhovujúceho permanentného make-upu.</p>
+            <div class="tags"><span>PMU removal</span></div>
+          </div>
+          <div class="svc" data-go="sluzby" style="cursor:pointer">
+            <span class="idx">04</span><h3>Kurzy &amp; školenia</h3>
+            <p>Odovzdávam skúsenosti ďalej — kompletné vzdelávanie v permanentnom make-upe.</p>
+            <div class="tags"><span>Pre začiatočníčky</span><span>Pre pokročilé</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-cream">
+      <div class="wrap about-grid">
+        <div class="frame"><div class="ph square"><span class="ph-label">Veronika Tóth</span></div></div>
+        <div>
+          <span class="eyebrow">O mne</span>
+          <p class="big" style="margin-top:18px">„Každá tvár je iná — a presne tak pristupujem aj ku každému návrhu."</p>
+          <p>Som špecialistka na profesionálny permanentný make-up so štúdiom v Nitre. Verím, že najkrajší výsledok je ten, ktorý vyzerá úplne prirodzene a hrá vo váš prospech aj po rokoch.</p>
+          <a class="btn btn-ghost" data-go="omne" href="#omne" style="margin-top:8px">Viac o mne</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= O MNE ================= -->
+  <div class="view" id="omne">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="eyebrow">O mne</span><h2>Precíznosť, ktorá vyzerá prirodzene</h2></div>
+        <div class="about-grid">
+          <div class="frame"><div class="ph tall"><span class="ph-label">Ateliér · Pražská 11</span></div></div>
+          <div>
+            <p class="big">Permanentný make-up nie je o tom, aby bolo vidno, že ho máte. Je o tom, aby ste sa každé ráno zobudili upravená.</p>
+            <p>Špecializujem sa na permanentný make-up obočia a pier s dôrazom na prirodzený a dlhodobo krásny vzhľad. Spájam estetiku, bezpečnosť a vzdelávanie na najvyššej úrovni.</p>
+            <p>Pred každým zákrokom si spolu v pokoji navrhneme tvar a odtieň presne na mieru vašej tváre, typu pleti a predstáv. Pracujem s certifikovanými pigmentmi a sterilnými jednorazovými nástrojmi.</p>
+            <p>Okrem klientskej práce sa venujem aj vzdelávaniu — vediem kurzy a školenia pre tých, ktorí sa chcú permanentnému make-upu venovať profesionálne.</p>
+            <div class="sig">Veronika Tóth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-cream" style="padding-block:0;">
+      <div class="pillars">
+        <div class="pillar"><span class="num">01</span><h3>Konzultácia</h3><p>Spoločne určíme tvar, odtieň a techniku podľa vašej tváre.</p></div>
+        <div class="pillar"><span class="num">02</span><h3>Zákrok</h3><p>Precízna, šetrná práca v príjemnom a hygienicky bezpečnom prostredí.</p></div>
+        <div class="pillar"><span class="num">03</span><h3>Doladenie</h3><p>Kontrolné sedenie, kde výsledok doladíme do dokonalosti.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= SLUŽBY ================= -->
+  <div class="view" id="sluzby">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="eyebrow">Služby</span><h2>Zákroky na mieru vašej krásy</h2></div>
+
+        <div class="about-grid" style="margin-bottom:56px">
+          <div><span class="idx" style="font-family:var(--serif);font-style:italic;color:var(--gold-deep);font-size:20px">01 — Obočie</span>
+            <h3 style="font-size:34px;margin:10px 0 14px">Powderbrows &amp; Hairstrokes</h3>
+            <p style="color:var(--ink-soft);max-width:52ch">Powderbrows dodá obočiu jemný, púdrový a rovnomerný efekt — akoby zľahka podčiarknuté ceruzkou. Hairstrokes imituje jednotlivé vlásky pre maximálne realistický výsledok. Techniku vždy volíme podľa vašej pleti a želaného vzhľadu.</p>
+          </div>
+          <div class="frame"><div class="ph wide"><span class="ph-label">Powderbrows</span></div></div>
+        </div>
+
+        <div class="about-grid" style="margin-bottom:56px">
+          <div class="frame"><div class="ph wide"><span class="ph-label">Classy Lips</span></div></div>
+          <div><span class="idx" style="font-family:var(--serif);font-style:italic;color:var(--gold-deep);font-size:20px">02 — Pery</span>
+            <h3 style="font-size:34px;margin:10px 0 14px">Classy Lips</h3>
+            <p style="color:var(--ink-soft);max-width:52ch">Metóda Classy Lips prirodzene dotvorí kontúru pier, zjednotí ich farbu a dodá im sviežosť. Výsledkom sú pery, ktoré vyzerajú zdravo a plnšie — bez efektu „namaľovaných".</p>
+          </div>
+        </div>
+
+        <div class="about-grid" style="margin-bottom:56px">
+          <div><span class="idx" style="font-family:var(--serif);font-style:italic;color:var(--gold-deep);font-size:20px">03 — Laser</span>
+            <h3 style="font-size:34px;margin:10px 0 14px">Laserové odstránenie PMU</h3>
+            <p style="color:var(--ink-soft);max-width:52ch">Nie ste spokojná so starým permanentom? Šetrné laserové odstránenie postupne rozjasní a odstráni nevyhovujúci pigment, aby sme mohli začať s čistým podkladom.</p>
+          </div>
+          <div class="frame"><div class="ph wide"><span class="ph-label">Laser removal</span></div></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="frame"><div class="ph wide"><span class="ph-label">Kurzy PMU</span></div></div>
+          <div><span class="idx" style="font-family:var(--serif);font-style:italic;color:var(--gold-deep);font-size:20px">04 — Vzdelávanie</span>
+            <h3 style="font-size:34px;margin:10px 0 14px">Kurzy a školenia</h3>
+            <p style="color:var(--ink-soft);max-width:52ch">Komplexné kurzy permanentného make-upu pre začiatočníčky aj pokročilé. Teória, hygiena, praktický nácvik a podpora aj po skončení kurzu. Kapacita je obmedzená pre individuálny prístup.</p>
+            <a class="btn btn-ghost" data-go="kontakt" href="#kontakt" style="margin-top:8px">Mám záujem o kurz</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= CENNÍK ================= -->
+  <div class="view" id="cennik">
+    <section>
+      <div class="wrap" style="max-width:900px">
+        <div class="head center"><span class="eyebrow center">Cenník</span><h2>Prehľadné ceny</h2></div>
+        <div class="price-list">
+          <div class="price-row"><div><span class="name">Obočie — Powderbrows</span><span class="desc">Púdrový efekt · vrátane konzultácie</span></div><span class="amt">250 €</span></div>
+          <div class="price-row"><div><span class="name">Obočie — Hairstrokes</span><span class="desc">Realistické vlásky · vrátane konzultácie</span></div><span class="amt">280 €</span></div>
+          <div class="price-row"><div><span class="name">Pery — Classy Lips</span><span class="desc">Kontúra a oživenie farby</span></div><span class="amt">260 €</span></div>
+          <div class="price-row"><div><span class="name">Korekcia / doladenie</span><span class="desc">Do 8 týždňov od zákroku</span></div><span class="amt">60 €</span></div>
+          <div class="price-row"><div><span class="name">Obnova (refresh)</span><span class="desc">Osvieženie do 18 mesiacov</span></div><span class="amt">od 120 €</span></div>
+          <div class="price-row"><div><span class="name">Laserové odstránenie PMU</span><span class="desc">Cena za jedno sedenie</span></div><span class="amt">od 40 €</span></div>
+          <div class="price-row"><div><span class="name">Kurz permanentného make-upu</span><span class="desc">Individuálny · na vyžiadanie</span></div><span class="amt">na dopyt</span></div>
+        </div>
+        <p class="price-note">* Uvedené ceny sú orientačné. Finálnu cenu vždy potvrdíme pri osobnej konzultácii podľa náročnosti a rozsahu zákroku.</p>
+        <div style="text-align:center;margin-top:34px"><a class="btn btn-solid" data-go="kontakt" href="#kontakt">Objednať termín</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= GALÉRIA ================= -->
+  <div class="view" id="galeria">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="eyebrow">Fotogaléria</span><h2>Výsledky, ktoré hovoria za mňa</h2></div>
+        <div class="gallery">
+          <div class="frame big"><div class="ph" style="height:100%"><span class="ph-label">Obočie · Powderbrows</span></div></div>
+          <div class="frame"><div class="ph square"><span class="ph-label">Detail</span></div></div>
+          <div class="frame"><div class="ph square"><span class="ph-label">Pery</span></div></div>
+          <div class="frame"><div class="ph square"><span class="ph-label">Hairstrokes</span></div></div>
+          <div class="frame"><div class="ph square"><span class="ph-label">Before / After</span></div></div>
+          <div class="frame"><div class="ph square"><span class="ph-label">Classy Lips</span></div></div>
+          <div class="frame"><div class="ph square"><span class="ph-label">Obočie</span></div></div>
+          <div class="frame"><div class="ph square"><span class="ph-label">Studio</span></div></div>
+          <div class="frame"><div class="ph square"><span class="ph-label">Detail</span></div></div>
+        </div>
+        <p class="price-note" style="text-align:center">Aktuálne práce nájdete aj na mojom Instagrame <strong>@veronikatoth.pmu</strong>.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= REFERENCIE ================= -->
+  <div class="view" id="referencie">
+    <section>
+      <div class="wrap">
+        <div class="head center"><span class="eyebrow center">Referencie</span><h2>Čo hovoria klientky</h2></div>
+        <div class="refs">
+          <div class="ref">
+            <div class="stars">★★★★★</div>
+            <blockquote>„Konečne obočie, ktoré vyzerá úplne prirodzene. Ráno ušetrím kopu času a stále vyzerám upravene."</blockquote>
+            <div class="who"><span class="av">M</span><span class="n">Martina K.<small>Powderbrows</small></span></div>
+          </div>
+          <div class="ref">
+            <div class="stars">★★★★★</div>
+            <blockquote>„Veronika je profesionálka telom aj dušou. Všetko mi pokojne vysvetlila a výsledok predčil očakávania."</blockquote>
+            <div class="who"><span class="av">L</span><span class="n">Lucia B.<small>Classy Lips</small></span></div>
+          </div>
+          <div class="ref">
+            <div class="stars">★★★★★</div>
+            <blockquote>„Absolvovala som u nej kurz a bol to najlepší štart do kariéry. Odporúčam každému, kto to myslí vážne."</blockquote>
+            <div class="who"><span class="av">S</span><span class="n">Simona T.<small>Kurz PMU</small></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= KONTAKT ================= -->
+  <div class="view" id="kontakt">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="eyebrow">Kontakt</span><h2>Objednajte sa na konzultáciu</h2></div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="row"><span class="k">Adresa</span><span class="v">Pražská 11, Nitra<small>Slovensko</small></span></div>
+            <div class="row"><span class="k">Telefón</span><span class="v"><a href="tel:+421903810610">+421 903 810 610</a></span></div>
+            <div class="row"><span class="k">E-mail</span><span class="v"><a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a></span></div>
+            <div class="row"><span class="k">Otváracie h.</span><span class="v">Po – Pia · 9:00 – 18:00<small>So podľa dohody</small></span></div>
+            <div class="row"><span class="k">Instagram</span><span class="v"><a href="mailto:pmutoth@gmail.com">@veronikatoth.pmu</a></span></div>
+          </div>
+          <div>
+            <form class="contact" id="contactForm">
+              <div>
+                <label for="cf-name">Meno a priezvisko</label>
+                <input id="cf-name" name="name" type="text" required autocomplete="name">
+              </div>
+              <div class="form-row">
+                <div><label for="cf-phone">Telefón</label><input id="cf-phone" name="phone" type="tel" autocomplete="tel"></div>
+                <div><label for="cf-service">Služba</label><input id="cf-service" name="service" type="text" placeholder="Obočie / Pery / Kurz"></div>
+              </div>
+              <div>
+                <label for="cf-msg">Správa</label>
+                <textarea id="cf-msg" name="message" rows="4" placeholder="Napíšte mi, o čo máte záujem…"></textarea>
+              </div>
+              <button class="btn btn-solid" type="submit" style="justify-content:center">Odoslať dopyt</button>
+              <p id="cf-note" class="price-note" hidden>Ďakujem! Otvorí sa váš e-mailový klient s predvyplnenou správou.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="brand" data-go="uvod" role="button" tabindex="0">
+        <span class="monogram">VT</span>
+        <span class="brand-name">Veronika&nbsp;Tóth<small>Permanent make-up · Nitra</small></span>
+      </div>
+      <nav>
+        <button data-go="omne">O mne</button>
+        <button data-go="sluzby">Služby</button>
+        <button data-go="cennik">Cenník</button>
+        <button data-go="galeria">Galéria</button>
+        <button data-go="referencie">Referencie</button>
+        <button data-go="kontakt">Kontakt</button>
+      </nav>
+    </div>
+    <div class="f-bottom">
+      <span>© <span id="year"></span> Veronika Tóth — Permanentný make-up</span>
+      <span>Pražská 11, Nitra · +421 903 810 610</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var views = document.querySelectorAll('.view');
+    var navBtns = document.querySelectorAll('nav.links button');
+
+    function go(id) {
+      var found = false;
+      views.forEach(function (v) {
+        var on = v.id === id;
+        v.classList.toggle('active', on);
+        if (on) found = true;
+      });
+      if (!found) { id = 'uvod'; document.getElementById('uvod').classList.add('active'); }
+      navBtns.forEach(function (b) { b.classList.toggle('active', b.dataset.go === id); });
+      try { history.replaceState(null, '', '#' + id); } catch (e) {}
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      // close mobile menu
+      document.getElementById('navlinks').classList.remove('open');
+    }
+
+    // delegate all [data-go] clicks
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest('[data-go]');
+      if (t) { e.preventDefault(); go(t.dataset.go); }
+    });
+    // keyboard for brand
+    document.querySelectorAll('.brand[role="button"]').forEach(function (el) {
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go('uvod'); }
+      });
+    });
+
+    // mobile menu
+    document.getElementById('menuBtn').addEventListener('click', function () {
+      document.getElementById('navlinks').classList.toggle('open');
+    });
+
+    // theme toggle
+    var root = document.documentElement;
+    var stored;
+    try { stored = localStorage.getItem('vt-theme'); } catch (e) {}
+    if (stored) root.setAttribute('data-theme', stored);
+    document.getElementById('themeBtn').addEventListener('click', function () {
+      var cur = root.getAttribute('data-theme');
+      var isDark = cur === 'dark' || (!cur && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      var next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('vt-theme', next); } catch (e) {}
+    });
+
+    // contact form -> mailto
+    var form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('cf-name').value || '';
+        var phone = document.getElementById('cf-phone').value || '';
+        var svc = document.getElementById('cf-service').value || '';
+        var msg = document.getElementById('cf-msg').value || '';
+        var body = 'Meno: ' + name + '\nTelefón: ' + phone + '\nSlužba: ' + svc + '\n\n' + msg;
+        var href = 'mailto:pmutoth@gmail.com?subject=' + encodeURIComponent('Dopyt z webu — ' + name) + '&body=' + encodeURIComponent(body);
+        document.getElementById('cf-note').hidden = false;
+        window.location.href = href;
+      });
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // open on hash if present
+    var initial = (location.hash || '').replace('#', '');
+    if (initial) go(initial);
+  })();
+</script>

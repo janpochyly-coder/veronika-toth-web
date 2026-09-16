@@ -1,0 +1,345 @@
+<title>Veronika Tóth PMU — Návrh 2</title>
+<meta name="description" content="Permanentný make-up v Nitre — variant Čistý luxus.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@300;400;500;600&display=swap">
+
+<style>
+  :root {
+    --bg:      #FDFBF7;
+    --white:   #FFFFFF;
+    --beige:   #F5EFE4;
+    --beige-2: #ECE2D0;
+    --ink:     #17130D;
+    --muted:   #786F60;
+    --line:    #E7DECE;
+    --gold:    #A9843C;
+    --gold-2:  #C7A567;
+
+    --display: "Marcellus", Georgia, serif;
+    --body: "Mulish", "Helvetica Neue", Arial, sans-serif;
+    --wrap: 1120px;
+    --gutter: clamp(20px, 5vw, 60px);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 300; font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: .01em; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+
+  .kicker { font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: .34em; text-transform: uppercase; color: var(--gold); }
+  .dot { display:inline-block; width:5px; height:5px; border-radius:50%; background: var(--gold); margin: 0 auto 20px; }
+
+  /* nav */
+  header.nav { position: sticky; top: env(safe-area-inset-top,0px); z-index: 50; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-inner { padding-block: 16px; display:flex; flex-direction:column; align-items:center; gap: 12px; }
+  .brand { text-align:center; cursor:pointer; }
+  .brand .name { font-family: var(--display); font-size: 24px; letter-spacing: .18em; text-transform: uppercase; line-height:1; }
+  .brand .sub { font-size: 10px; letter-spacing: .38em; text-transform: uppercase; color: var(--muted); margin-top: 7px; }
+  nav.links { display:flex; align-items:center; gap: 30px; flex-wrap:wrap; justify-content:center; }
+  nav.links button { background:none; border:0; cursor:pointer; font-family: var(--body); font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); padding: 4px 0; transition: color .25s; }
+  nav.links button:hover, nav.links button.active { color: var(--ink); }
+  nav.links button.active { border-bottom: 1px solid var(--gold); }
+  .menu-toggle { display:none; position:absolute; right: var(--gutter); top: 18px; background:none; border:0; cursor:pointer; color: var(--ink); }
+
+  main{display:block;}
+  .view{display:none; animation: fade .5s ease both;}
+  .view.active{display:block;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  @media (prefers-reduced-motion: reduce){ .view{animation:none} * { scroll-behavior:auto !important } }
+
+  section { padding-block: clamp(64px, 9vw, 120px); text-align:center; }
+  .section-beige { background: var(--beige); }
+
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; font-family: var(--body); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; padding: 15px 34px; cursor:pointer; border: 1px solid var(--ink); color: var(--ink); background: transparent; border-radius: 0; transition: background .25s, color .25s; }
+  .btn:hover { background: var(--ink); color: var(--bg); }
+  .btn.gold { border-color: var(--gold); color: #2a2010; background: var(--gold-2); }
+  .btn.gold:hover { background: var(--gold); color:#fff; }
+
+  .hero .kicker { display:block; margin-bottom: 22px; }
+  .hero h1 { font-size: clamp(42px, 7vw, 82px); line-height: 1.08; }
+  .hero h1 span { display:block; font-style: italic; font-family: Georgia, serif; color: var(--gold); font-size: .5em; margin-top: 14px; letter-spacing: 0; text-transform: none; }
+  .hero p { font-size: 17px; color: var(--muted); max-width: 52ch; margin: 26px auto 34px; }
+  .hero-actions { display:flex; gap: 16px; justify-content:center; flex-wrap:wrap; }
+
+  .frame { position: relative; overflow:hidden; }
+  .frame::after { content:""; position:absolute; inset:14px; border:1px solid rgba(255,255,255,.4); pointer-events:none; }
+  .ph { background: linear-gradient(160deg, var(--beige-2) 0%, var(--gold-2) 130%); position:relative; }
+  .ph.wide{aspect-ratio:16/9} .ph.square{aspect-ratio:1/1} .ph.tall{aspect-ratio:3/4} .ph.pano{aspect-ratio:21/9}
+  .ph .lab { position:absolute; left:50%; bottom:18px; transform:translateX(-50%); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#241b0d; background: color-mix(in srgb, var(--bg) 82%, transparent); padding:6px 14px; }
+  .hero-img { margin-top: clamp(40px,6vw,72px); }
+
+  .lead-line { max-width: 60ch; margin: 0 auto; }
+  .head { max-width: 640px; margin: 0 auto clamp(38px,5vw,58px); }
+  .head h2 { font-size: clamp(32px,5vw,52px); line-height:1.1; margin-top: 16px; }
+  .head p { color: var(--muted); margin: 16px auto 0; max-width: 52ch; }
+
+  /* pillars */
+  .pillars { display:grid; grid-template-columns:repeat(3,1fr); gap: 40px; max-width: 900px; margin: 0 auto; }
+  .pillar .n { font-family: var(--display); color: var(--gold); font-size: 15px; letter-spacing: .3em; }
+  .pillar h3 { font-size: 23px; margin: 12px 0 8px; }
+  .pillar p { color: var(--muted); font-size: 14px; margin:0; }
+
+  /* services list */
+  .svc-list { max-width: 820px; margin: 0 auto; text-align:left; border-top:1px solid var(--line); }
+  .svc { display:grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items:center; padding: 30px 4px; border-bottom:1px solid var(--line); }
+  .svc .no { font-family: var(--display); color: var(--gold); font-size: 18px; }
+  .svc h3 { font-size: 26px; }
+  .svc p { margin: 6px 0 0; color: var(--muted); font-size: 14px; max-width: 44ch; }
+  .svc .tag { font-size: 11px; letter-spacing:.14em; text-transform:uppercase; color: var(--muted); border:1px solid var(--line); padding: 6px 12px; white-space:nowrap; }
+
+  /* about */
+  .about { max-width: 720px; margin: 0 auto; }
+  .about .q { font-family: var(--display); font-size: clamp(24px,3.5vw,32px); line-height:1.4; }
+  .about p { color: var(--muted); margin: 22px auto 0; max-width: 58ch; }
+  .sig { font-family: Georgia, serif; font-style:italic; font-size: 24px; color: var(--gold); margin-top: 28px; }
+
+  /* price */
+  .price { max-width: 760px; margin: 0 auto; text-align:left; }
+  .prow { display:flex; justify-content:space-between; align-items:baseline; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .prow:first-child{border-top:1px solid var(--line);}
+  .prow .l { font-family: var(--display); font-size: 21px; }
+  .prow .l small { display:block; font-family: var(--body); font-size: 13px; color: var(--muted); letter-spacing:.02em; }
+  .prow .r { font-family: var(--display); font-size: 21px; color: var(--gold); white-space:nowrap; font-variant-numeric: tabular-nums; }
+  .pnote { color: var(--muted); font-size: 13px; margin-top: 22px; }
+
+  /* gallery */
+  .gal { display:grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+
+  /* refs */
+  .refs { display:grid; grid-template-columns: repeat(3,1fr); gap: 28px; max-width: 1000px; margin: 0 auto; }
+  .ref { padding: 8px; }
+  .ref .stars { color: var(--gold); letter-spacing: 3px; }
+  .ref blockquote { font-family: var(--display); font-size: 19px; line-height:1.5; margin: 16px 0; }
+  .ref .who { font-size: 13px; letter-spacing:.1em; text-transform:uppercase; color: var(--muted); }
+
+  /* contact */
+  .contact { max-width: 900px; margin: 0 auto; display:grid; grid-template-columns: 1fr 1fr; gap: 48px; text-align:left; }
+  .cinfo .r { padding: 16px 0; border-bottom:1px solid var(--line); }
+  .cinfo .r:first-child{border-top:1px solid var(--line);}
+  .cinfo .k { font-size: 10px; letter-spacing:.24em; text-transform:uppercase; color: var(--gold); }
+  .cinfo .v { font-size: 17px; margin-top: 4px; }
+  .cinfo .v small { display:block; color: var(--muted); font-size:14px; }
+  form { display:grid; gap: 14px; }
+  form label { font-size: 10px; letter-spacing:.2em; text-transform:uppercase; color: var(--muted); }
+  form input, form textarea { width:100%; background: var(--white); border:1px solid var(--line); padding: 12px 14px; font-family: var(--body); font-size: 15px; color: var(--ink); border-radius:0; }
+  form input:focus, form textarea:focus { outline: 1px solid var(--gold); border-color: transparent; }
+
+  footer { background: var(--ink); color: var(--bg); text-align:center; padding-block: 56px 34px; }
+  footer .name { font-family: var(--display); letter-spacing:.2em; text-transform:uppercase; font-size: 20px; }
+  footer .sub { font-size: 11px; letter-spacing:.3em; text-transform:uppercase; color: rgba(255,255,255,.5); margin-top: 8px; }
+  footer nav { display:flex; gap: 20px; justify-content:center; flex-wrap:wrap; margin: 26px 0; }
+  footer nav button { background:none;border:0;color:rgba(255,255,255,.7);cursor:pointer;font-family:var(--body);font-size:12px;letter-spacing:.08em; }
+  footer nav button:hover{color:var(--gold-2);}
+  footer .fb { font-size: 12px; color: rgba(255,255,255,.45); letter-spacing:.04em; }
+
+  .back { position: fixed; left: 16px; bottom: calc(16px + env(safe-area-inset-bottom,0px)); z-index: 60; background: var(--ink); color: var(--bg); font-size:11px; letter-spacing:.14em; text-transform:uppercase; padding: 10px 16px; border-radius:100px; opacity:.85; }
+  .back:hover{opacity:1;}
+
+  @media (max-width: 820px) {
+    nav.links { display:none; }
+    nav.links.open { display:flex; flex-direction:column; gap:12px; }
+    .menu-toggle{display:block;}
+    .pillars, .gal, .refs, .contact { grid-template-columns:1fr; }
+    .gal{grid-template-columns:repeat(2,1fr);}
+    .svc{grid-template-columns:auto 1fr; }
+    .svc .tag{grid-column:2;justify-self:start;}
+  }
+</style>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand" data-go="uvod"><div class="name">Veronika Tóth</div><div class="sub">Permanent make-up · Nitra</div></div>
+    <button class="menu-toggle" id="menuBtn" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <nav class="links" id="navlinks">
+      <button data-go="uvod" class="active">Úvod</button>
+      <button data-go="omne">O mne</button>
+      <button data-go="sluzby">Služby</button>
+      <button data-go="cennik">Cenník</button>
+      <button data-go="galeria">Galéria</button>
+      <button data-go="referencie">Referencie</button>
+      <button data-go="kontakt">Kontakt</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- UVOD -->
+  <div class="view active" id="uvod">
+    <section class="hero">
+      <div class="wrap">
+        <span class="kicker">Permanentný make-up · Nitra</span>
+        <h1>Prirodzená krása<span>— tichá, presná, nadčasová.</span></h1>
+        <p>Jemný permanentný make-up obočia a pier so zameraním na prirodzený a dlhodobý výsledok. Estetika, bezpečnosť a vzdelávanie na najvyššej úrovni.</p>
+        <div class="hero-actions">
+          <a class="btn gold" data-go="kontakt" href="#kontakt">Objednať termín</a>
+          <a class="btn" data-go="sluzby" href="#sluzby">Služby</a>
+        </div>
+        <div class="hero-img frame"><div class="ph pano"><span class="lab">Studio · Nitra</span></div></div>
+      </div>
+    </section>
+
+    <section class="section-beige">
+      <div class="wrap">
+        <span class="dot"></span>
+        <div class="pillars">
+          <div class="pillar"><div class="n">I</div><h3>Estetika</h3><p>Tvar navrhnutý na mieru tvári — jemne a symetricky.</p></div>
+          <div class="pillar"><div class="n">II</div><h3>Bezpečnosť</h3><p>Certifikované pigmenty, sterilné jednorazové nástroje.</p></div>
+          <div class="pillar"><div class="n">III</div><h3>Vzdelávanie</h3><p>Akreditované kurzy pre začiatočníčky aj pokročilé.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Čo ponúkam</span><h2>Štyri služby, jeden štandard</h2></div>
+        <div class="svc-list">
+          <div class="svc"><span class="no">01</span><div><h3>Obočie</h3><p>Powderbrows pre púdrový efekt alebo Hairstrokes s realistickými vláskami.</p></div><span class="tag">PMU obočie</span></div>
+          <div class="svc"><span class="no">02</span><div><h3>Pery</h3><p>Metóda Classy Lips — prirodzená kontúra a oživenie farby.</p></div><span class="tag">Classy Lips</span></div>
+          <div class="svc"><span class="no">03</span><div><h3>Laserové odstránenie</h3><p>Šetrné odstránenie starého permanentného make-upu.</p></div><span class="tag">Removal</span></div>
+          <div class="svc"><span class="no">04</span><div><h3>Kurzy &amp; školenia</h3><p>Kompletné vzdelávanie v permanentnom make-upe.</p></div><span class="tag">Vzdelávanie</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- O MNE -->
+  <div class="view" id="omne">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">O mne</span><h2>Precíznosť, ktorá vyzerá prirodzene</h2></div>
+        <div class="hero-img frame" style="max-width:760px;margin-inline:auto"><div class="ph wide"><span class="lab">Veronika Tóth</span></div></div>
+        <div class="about" style="margin-top:44px">
+          <p class="q">„Najkrajší výsledok je ten, ktorý vyzerá tak, akoby ste sa s ním narodili."</p>
+          <p>Som špecialistka na profesionálny permanentný make-up so štúdiom v Nitre. Špecializujem sa na obočie a pery s dôrazom na prirodzený a dlhodobo krásny vzhľad.</p>
+          <p>Pred každým zákrokom si spolu v pokoji navrhneme tvar a odtieň presne na mieru vašej tváre a predstáv. Pracujem výhradne s certifikovanými pigmentmi a sterilnými jednorazovými nástrojmi. Popri klientkach sa venujem aj vzdelávaniu ďalších profesionálov.</p>
+          <div class="sig">Veronika Tóth</div>
+        </div>
+      </div>
+    </section>
+    <section class="section-beige">
+      <div class="wrap"><span class="dot"></span>
+        <div class="pillars">
+          <div class="pillar"><div class="n">I</div><h3>Konzultácia</h3><p>Určíme tvar, odtieň a techniku podľa vašej tváre.</p></div>
+          <div class="pillar"><div class="n">II</div><h3>Zákrok</h3><p>Precízna a šetrná práca v hygienicky bezpečnom prostredí.</p></div>
+          <div class="pillar"><div class="n">III</div><h3>Doladenie</h3><p>Kontrolné sedenie na dokonalý výsledok.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SLUZBY -->
+  <div class="view" id="sluzby">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Služby</span><h2>Zákroky na mieru</h2></div>
+        <div class="svc-list">
+          <div class="svc"><span class="no">01</span><div><h3>Powderbrows &amp; Hairstrokes</h3><p>Púdrový, jemne podčiarknutý efekt, alebo realistické jednotlivé vlásky — techniku volíme podľa pleti a želaného vzhľadu.</p></div><span class="tag">Obočie</span></div>
+          <div class="svc"><span class="no">02</span><div><h3>Classy Lips</h3><p>Prirodzené dotvorenie kontúry, zjednotenie farby a sviežosť pier bez efektu „namaľovaných".</p></div><span class="tag">Pery</span></div>
+          <div class="svc"><span class="no">03</span><div><h3>Laserové odstránenie PMU</h3><p>Šetrné postupné odstránenie nevyhovujúceho pigmentu pre čistý podklad.</p></div><span class="tag">Laser</span></div>
+          <div class="svc"><span class="no">04</span><div><h3>Kurzy a školenia</h3><p>Teória, hygiena, praktický nácvik a podpora aj po skončení kurzu. Kapacita obmedzená pre individuálny prístup.</p></div><span class="tag">Vzdelávanie</span></div>
+        </div>
+        <div style="margin-top:40px"><a class="btn gold" data-go="kontakt" href="#kontakt">Mám záujem</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CENNIK -->
+  <div class="view" id="cennik">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Cenník</span><h2>Prehľadné ceny</h2></div>
+        <div class="price">
+          <div class="prow"><div class="l">Obočie — Powderbrows<small>Púdrový efekt · vrátane konzultácie</small></div><div class="r">250 €</div></div>
+          <div class="prow"><div class="l">Obočie — Hairstrokes<small>Realistické vlásky · vrátane konzultácie</small></div><div class="r">280 €</div></div>
+          <div class="prow"><div class="l">Pery — Classy Lips<small>Kontúra a oživenie farby</small></div><div class="r">260 €</div></div>
+          <div class="prow"><div class="l">Korekcia / doladenie<small>Do 8 týždňov od zákroku</small></div><div class="r">60 €</div></div>
+          <div class="prow"><div class="l">Obnova (refresh)<small>Osvieženie do 18 mesiacov</small></div><div class="r">od 120 €</div></div>
+          <div class="prow"><div class="l">Laserové odstránenie PMU<small>Cena za jedno sedenie</small></div><div class="r">od 40 €</div></div>
+          <div class="prow"><div class="l">Kurz permanentného make-upu<small>Individuálny · na vyžiadanie</small></div><div class="r">na dopyt</div></div>
+        </div>
+        <p class="pnote">* Uvedené ceny sú orientačné. Finálnu cenu potvrdíme pri osobnej konzultácii.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- GALERIA -->
+  <div class="view" id="galeria">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Fotogaléria</span><h2>Výsledky</h2></div>
+        <div class="gal">
+          <div class="frame"><div class="ph square"><span class="lab">Powderbrows</span></div></div>
+          <div class="frame"><div class="ph square"><span class="lab">Classy Lips</span></div></div>
+          <div class="frame"><div class="ph square"><span class="lab">Hairstrokes</span></div></div>
+          <div class="frame"><div class="ph square"><span class="lab">Detail</span></div></div>
+          <div class="frame"><div class="ph square"><span class="lab">Before / After</span></div></div>
+          <div class="frame"><div class="ph square"><span class="lab">Studio</span></div></div>
+        </div>
+        <p class="pnote">Aktuálne práce na Instagrame <strong>@veronikatoth.pmu</strong>.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- REFERENCIE -->
+  <div class="view" id="referencie">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Referencie</span><h2>Čo hovoria klientky</h2></div>
+        <div class="refs">
+          <div class="ref"><div class="stars">★★★★★</div><blockquote>„Konečne obočie, ktoré vyzerá úplne prirodzene. Ráno ušetrím kopu času."</blockquote><div class="who">Martina K.</div></div>
+          <div class="ref"><div class="stars">★★★★★</div><blockquote>„Profesionálka telom aj dušou. Výsledok predčil moje očakávania."</blockquote><div class="who">Lucia B.</div></div>
+          <div class="ref"><div class="stars">★★★★★</div><blockquote>„Kurz u Veroniky bol najlepší štart do kariéry. Vrelo odporúčam."</blockquote><div class="who">Simona T.</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- KONTAKT -->
+  <div class="view" id="kontakt">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Kontakt</span><h2>Objednajte sa</h2></div>
+        <div class="contact">
+          <div class="cinfo">
+            <div class="r"><div class="k">Adresa</div><div class="v">Pražská 11, Nitra<small>Slovensko</small></div></div>
+            <div class="r"><div class="k">Telefón</div><div class="v"><a href="tel:+421903810610">+421 903 810 610</a></div></div>
+            <div class="r"><div class="k">E-mail</div><div class="v"><a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a></div></div>
+            <div class="r"><div class="k">Otváracie hodiny</div><div class="v">Po – Pia · 9:00 – 18:00<small>So podľa dohody</small></div></div>
+          </div>
+          <form id="cf">
+            <div><label for="c-name">Meno</label><input id="c-name" type="text" required></div>
+            <div><label for="c-phone">Telefón</label><input id="c-phone" type="tel"></div>
+            <div><label for="c-msg">Správa</label><textarea id="c-msg" rows="4"></textarea></div>
+            <button class="btn gold" type="submit">Odoslať dopyt</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="name" data-go="uvod" style="cursor:pointer">Veronika Tóth</div>
+    <div class="sub">Permanent make-up · Nitra</div>
+    <nav>
+      <button data-go="omne">O mne</button><button data-go="sluzby">Služby</button><button data-go="cennik">Cenník</button><button data-go="galeria">Galéria</button><button data-go="referencie">Referencie</button><button data-go="kontakt">Kontakt</button>
+    </nav>
+    <div class="fb">© <span id="year"></span> Veronika Tóth · Pražská 11, Nitra · +421 903 810 610</div>
+  </div>
+</footer>
+
+<a class="back" href="../index.html">← Späť na návrhy</a>
+
+<script>
+  (function(){
+    var views=document.querySelectorAll('.view'), navBtns=document.querySelectorAll('nav.links button');
+    function go(id){var f=false;views.forEach(function(v){var on=v.id===id;v.classList.toggle('active',on);if(on)f=true;});if(!f){id='uvod';document.getElementById('uvod').classList.add('active');}navBtns.forEach(function(b){b.classList.toggle('active',b.dataset.go===id);});try{history.replaceState(null,'','#'+id);}catch(e){}window.scrollTo({top:0});document.getElementById('navlinks').classList.remove('open');}
+    document.addEventListener('click',function(e){var t=e.target.closest('[data-go]');if(t){e.preventDefault();go(t.dataset.go);}});
+    document.getElementById('menuBtn').addEventListener('click',function(){document.getElementById('navlinks').classList.toggle('open');});
+    var cf=document.getElementById('cf');if(cf){cf.addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('c-name').value||'',p=document.getElementById('c-phone').value||'',m=document.getElementById('c-msg').value||'';window.location.href='mailto:pmutoth@gmail.com?subject='+encodeURIComponent('Dopyt z webu — '+n)+'&body='+encodeURIComponent('Meno: '+n+'\nTelefón: '+p+'\n\n'+m);});}
+    document.getElementById('year').textContent=new Date().getFullYear();
+    var h=(location.hash||'').replace('#','');if(h)go(h);
+  })();
+</script>
