@@ -69,6 +69,21 @@
   .ph .lab { position:absolute; left:50%; bottom:18px; transform:translateX(-50%); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#241b0d; background: color-mix(in srgb, var(--bg) 82%, transparent); padding:6px 14px; }
   .hero-img { margin-top: clamp(40px,6vw,72px); }
 
+  /* reálne fotky v rámoch */
+  .ph img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; image-orientation: from-image; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+  .frame:hover .ph img { transform: scale(1.05); }
+
+  /* logo v hlavičke */
+  .brand .logo { height:60px; width:auto; display:block; margin:0 auto 8px; }
+
+  /* jemné animácie */
+  .js .reveal { opacity:0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .js .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+    .ph img { transition:none; } .frame:hover .ph img { transform:none; }
+  }
+
   .head { max-width: 640px; margin: 0 auto clamp(38px,5vw,58px); }
   .head h2 { font-size: clamp(32px,5vw,52px); line-height:1.1; margin-top: 16px; }
   .head p { color: var(--muted); margin: 16px auto 0; max-width: 52ch; }
@@ -183,7 +198,7 @@
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <div class="brand" data-go="uvod"><div class="name">Veronika Tóth</div><div class="sub">Permanent make-up · Nitra</div></div>
+    <div class="brand" data-go="uvod"><img class="logo" src="images/logo.png" alt="Veronika Tóth — permanentný make-up"><div class="sub">Permanent make-up · Nitra</div></div>
     <button class="menu-toggle" id="menuBtn" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     <nav class="links" id="navlinks">
       <button data-go="uvod" class="active">Úvod</button>
@@ -202,14 +217,14 @@
   <div class="view active" id="uvod">
     <section class="hero">
       <div class="wrap">
-        <span class="kicker">Permanentný make-up · Nitra</span>
+        <span class="kicker">Permanentný make-up · Nitra · od 2005</span>
         <h1>Prirodzená krása<span>— tichá, presná, nadčasová.</span></h1>
         <p>Profesionálny permanentný make-up obočia a pier so zameraním na prirodzený a dlhodobo krásny vzhľad. Spájam estetiku, bezpečnosť a vzdelávanie na najvyššej úrovni.</p>
         <div class="hero-actions">
           <a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a>
           <a class="btn" data-go="sluzby" href="#sluzby">Služby</a>
         </div>
-        <div class="hero-img frame"><div class="ph pano"><span class="lab">Studio · Nitra</span></div></div>
+        <div class="hero-img frame"><div class="ph pano"><img src="images/hero.jpg" alt="Permanentný make-up obočia — detail práce"><span class="lab">PhiBrows · detail</span></div></div>
       </div>
     </section>
 
@@ -284,10 +299,10 @@
     <section>
       <div class="wrap">
         <div class="head"><span class="kicker">O mne</span><h2>Precíznosť, ktorá vyzerá prirodzene</h2></div>
-        <div class="hero-img frame" style="max-width:760px;margin-inline:auto"><div class="ph wide"><span class="lab">Veronika Tóth</span></div></div>
+        <div class="hero-img frame" style="max-width:760px;margin-inline:auto"><div class="ph wide"><img src="images/g3.webp" alt="Permanentný make-up — zákrok"><span class="lab">Ateliér · Nitra</span></div></div>
         <div class="about" style="margin-top:44px">
           <p class="q">„Najkrajší výsledok je ten, ktorý vyzerá tak, akoby ste sa s ním narodili."</p>
-          <p>Som špecialistka na profesionálny permanentný make-up so štúdiom v Nitre. Špecializujem sa na obočie a pery s dôrazom na prirodzený a dlhodobo krásny vzhľad — obočie tvorím okrem iného technikou <strong>PhiBrows</strong>.</p>
+          <p>Som špecialistka na profesionálny permanentný make-up so štúdiom v Nitre — v obore pôsobím už <strong>od roku 2005</strong>. Špecializujem sa na obočie a pery s dôrazom na prirodzený a dlhodobo krásny vzhľad; obočie tvorím okrem iného technikou <strong>PhiBrows</strong>.</p>
           <p>Pred každým zákrokom si spolu v pokoji navrhneme tvar a odtieň presne na mieru vašej tváre a predstáv. Pracujem výhradne s certifikovanými pigmentmi a sterilnými jednorazovými nástrojmi. Popri klientkach sa venujem aj vzdelávaniu ďalších profesionálov.</p>
           <div class="sig">Veronika Tóth</div>
         </div>
@@ -403,12 +418,12 @@
       <div class="wrap">
         <div class="head"><span class="kicker">Fotogaléria</span><h2>Výsledky</h2></div>
         <div class="gal">
-          <div class="frame"><div class="ph square"><span class="lab">Obočie · PhiBrows</span></div></div>
-          <div class="frame"><div class="ph square"><span class="lab">Powderbrows</span></div></div>
-          <div class="frame"><div class="ph square"><span class="lab">Classy Lips</span></div></div>
-          <div class="frame"><div class="ph square"><span class="lab">Detail</span></div></div>
-          <div class="frame"><div class="ph square"><span class="lab">Before / After</span></div></div>
-          <div class="frame"><div class="ph square"><span class="lab">Studio</span></div></div>
+          <div class="frame"><div class="ph square"><img src="images/g1.webp" alt="PhiBrows — detail vlások"><span class="lab">Obočie · PhiBrows</span></div></div>
+          <div class="frame"><div class="ph square"><img src="images/g4.jpg" alt="Výsledok — obočie"><span class="lab">Výsledok</span></div></div>
+          <div class="frame"><div class="ph square"><img src="images/g5.jpg" alt="Výsledok — obočie"><span class="lab">Výsledok</span></div></div>
+          <div class="frame"><div class="ph square"><img src="images/g2.jpg" alt="Výsledok — tvár"><span class="lab">Detail</span></div></div>
+          <div class="frame"><div class="ph square"><img src="images/g3.webp" alt="Zákrok"><span class="lab">Zákrok</span></div></div>
+          <div class="frame"><div class="ph square"><img src="images/hero.jpg" alt="Detail práce"><span class="lab">Detail</span></div></div>
         </div>
         <p class="pnote">Aktuálne práce nájdete na Instagrame <a href="https://www.instagram.com/veronikatoth_phibrows/" target="_blank" rel="noopener"><strong>@veronikatoth_phibrows</strong></a>.</p>
       </div>
@@ -456,12 +471,29 @@
 
 <script>
   (function(){
+    document.documentElement.classList.add('js');
     var views=document.querySelectorAll('.view'), navBtns=document.querySelectorAll('nav.links button');
     function go(id){var f=false;views.forEach(function(v){var on=v.id===id;v.classList.toggle('active',on);if(on)f=true;});if(!f){id='uvod';document.getElementById('uvod').classList.add('active');}navBtns.forEach(function(b){b.classList.toggle('active',b.dataset.go===id);});try{history.replaceState(null,'','#'+id);}catch(e){}window.scrollTo({top:0});document.getElementById('navlinks').classList.remove('open');}
     document.addEventListener('click',function(e){var t=e.target.closest('[data-go]');if(t){e.preventDefault();go(t.dataset.go);}});
     document.getElementById('menuBtn').addEventListener('click',function(){document.getElementById('navlinks').classList.toggle('open');});
     var cf=document.getElementById('cf');if(cf){cf.addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('c-name').value||'',p=document.getElementById('c-phone').value||'',m=document.getElementById('c-msg').value||'';window.location.href='mailto:pmutoth@gmail.com?subject='+encodeURIComponent('Dopyt z webu — '+n)+'&body='+encodeURIComponent('Meno: '+n+'\nTelefón: '+p+'\n\n'+m);});}
     document.getElementById('year').textContent=new Date().getFullYear();
+
+    // jemné odhalenie pri scrolle
+    try {
+      var revealEls = document.querySelectorAll('.head, .pillar, .svc, .svc-more, .kbox, .ref, .g-badge, details.q, .care-step, .prow, .gal .frame, .about');
+      revealEls.forEach(function(el){ el.classList.add('reveal'); });
+      [['.gal','.frame'],['.svc-list','.svc'],['.pillars','.pillar'],['.refs','.ref'],['.kurzy-grid','.kbox'],['.care-list','.care-step']].forEach(function(pair){
+        document.querySelectorAll(pair[0]).forEach(function(group){
+          Array.prototype.slice.call(group.children).forEach(function(child,i){ if(child.classList.contains('reveal')){ child.style.transitionDelay=Math.min(i*70,350)+'ms'; } });
+        });
+      });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, { threshold:0.08, rootMargin:'0px 0px -40px 0px' });
+        revealEls.forEach(function(el){ io.observe(el); });
+      } else { revealEls.forEach(function(el){ el.classList.add('in'); }); }
+    } catch(e){}
+
     var h=(location.hash||'').replace('#','');if(h)go(h);
   })();
 </script>
