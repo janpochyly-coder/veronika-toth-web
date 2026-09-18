@@ -261,6 +261,25 @@
   .map-embed { margin-top: clamp(32px,5vw,48px); border:1px solid var(--line); }
   .map-embed iframe { display:block; width:100%; height:380px; border:0; }
   @media (max-width:600px){ .map-embed iframe{ height:300px; } }
+  .map-embed{position:relative;}
+  .map-ph{background:linear-gradient(160deg,var(--beige-2),var(--gold-2));min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;}
+  .map-ph p{margin:0;color:#2a2010;font-size:14px;max-width:42ch;}
+  .map-ph a{color:#2a2010;text-decoration:underline;}
+  /* právna stránka */
+  .legal{max-width:760px;margin:0 auto;text-align:left;}
+  .legal h3{font-size:22px;margin:28px 0 8px;font-family:var(--display);}
+  .legal p,.legal li{color:var(--muted);font-size:15px;}
+  .legal ul{padding-left:20px;margin:6px 0;}
+  .legal ul li{margin:4px 0;}
+  .legal a{color:var(--gold);text-decoration:underline;}
+  .legal .note{background:var(--beige);border:1px solid var(--line);padding:14px 16px;font-size:13px;color:var(--muted);margin:0 0 8px;}
+  /* cookie lišta */
+  .cookiebar{position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);color:var(--bg);padding:16px clamp(16px,4vw,40px);padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;box-shadow:0 -12px 34px -22px rgba(0,0,0,.6);}
+  .cookiebar p{margin:0;font-size:13px;max-width:62ch;color:rgba(255,255,255,.85);}
+  .cookiebar a{color:var(--gold-2);text-decoration:underline;cursor:pointer;}
+  .cookiebar .cb-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .cookiebar button{cursor:pointer;font-family:var(--body);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:11px 20px;border:1px solid var(--gold-2);background:none;color:var(--gold-2);}
+  .cookiebar button.acc{background:var(--gold-2);color:#2a2010;}
   form { display:grid; gap: 14px; }
   form label { font-size: 10px; letter-spacing:.2em; text-transform:uppercase; color: var(--muted); }
   form input, form textarea { width:100%; background: var(--white); border:1px solid var(--line); padding: 12px 14px; font-family: var(--body); font-size: 15px; color: var(--ink); border-radius:0; }
@@ -714,11 +733,65 @@
             <button class="btn gold" type="submit">Odoslať dopyt</button>
           </form>
         </div>
-        <div class="map-embed"><iframe title="Mapa — Pražská 11, Nitra" src="https://www.google.com/maps?q=Pra%C5%BEsk%C3%A1%2011%2C%20Nitra&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <div class="map-embed" id="mapBox">
+          <div class="map-ph" id="mapPh"><p>Mapa sa načíta z Google Máp. Načítaním súhlasíte so spracovaním podľa <a data-go="ochrana-udajov" href="#ochrana-udajov">ochrany osobných údajov</a>.</p><button type="button" class="btn gold" id="mapLoad">Zobraziť mapu</button></div>
+          <iframe title="Mapa — Pražská 11, Nitra" data-src="https://www.google.com/maps?q=Pra%C5%BEsk%C3%A1%2011%2C%20Nitra&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- OCHRANA OSOBNYCH UDAJOV -->
+  <div class="view" id="ochrana-udajov">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Právne</span><h2>Ochrana osobných údajov</h2></div>
+        <div class="legal">
+          <div class="note">Poznámka pre klientku: doplňte údaje prevádzkovateľa (obchodné meno, sídlo, IČO) — sú označené [...].</div>
+
+          <h3>Prevádzkovateľ</h3>
+          <p>[Obchodné meno], [sídlo / adresa prevádzky], IČO: [IČO]. Kontakt: <a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a>, +421 903 810 610.</p>
+
+          <h3>Aké údaje spracúvame</h3>
+          <p>Spracúvame údaje, ktoré nám poskytnete pri objednaní termínu alebo v kontaktnom formulári — meno, telefónne číslo, e-mail a obsah vašej správy. V súvislosti so zákrokmi môžeme viesť aj nevyhnutné údaje o poskytnutej službe.</p>
+
+          <h3>Účel a právny základ</h3>
+          <ul>
+            <li>vybavenie objednávky a komunikácia s vami (plnenie zmluvy, resp. opatrenia pred jej uzavretím),</li>
+            <li>odpoveď na dopyt z kontaktného formulára (oprávnený záujem),</li>
+            <li>plnenie zákonných povinností (napr. účtovníctvo).</li>
+          </ul>
+
+          <h3>Doba uchovávania</h3>
+          <p>Osobné údaje uchovávame len po dobu nevyhnutnú na daný účel, prípadne po dobu stanovenú príslušnými právnymi predpismi.</p>
+
+          <h3>Príjemcovia a tretie strany</h3>
+          <p>Na prevádzku webu a poskytovanie služieb využívame: rezervačný systém <strong>booqme</strong> (spracovanie objednávok), <strong>Google Maps</strong> (zobrazenie mapy), poskytovateľa <strong>hostingu a e-mailu</strong>. Tieto subjekty spracúvajú údaje ako sprostredkovatelia v nevyhnutnom rozsahu.</p>
+
+          <h3>Cookies</h3>
+          <p>Web používa nevyhnutné cookies potrebné pre svoje fungovanie. Obsah tretích strán (Google Mapy, prípadne Google recenzie) sa načíta až po vašom súhlase v cookie lište. Svoje rozhodnutie môžete kedykoľvek zmeniť vymazaním údajov prehliadača pre túto stránku.</p>
+
+          <h3>Vaše práva</h3>
+          <p>Máte právo na prístup k svojim údajom, ich opravu, výmaz, obmedzenie spracúvania, prenosnosť a právo namietať proti spracúvaniu. Máte tiež právo podať sťažnosť na <strong>Úrad na ochranu osobných údajov Slovenskej republiky</strong>.</p>
+
+          <h3>Kontakt</h3>
+          <p>V otázkach ochrany osobných údajov nás kontaktujte na <a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a>.</p>
+
+          <p class="pnote">Tento dokument je informatívny vzor. Pred spustením webu odporúčame jeho znenie prispôsobiť reálnemu rozsahu spracúvania údajov.</p>
+        </div>
+        <div style="text-align:center;margin-top:36px"><a class="btn" data-go="uvod" href="#uvod">Späť na úvod</a></div>
       </div>
     </section>
   </div>
 </main>
+
+<div class="cookiebar" id="cookiebar" hidden>
+  <p>Táto stránka používa nevyhnutné cookies a po vašom súhlase aj obsah tretích strán (Google Mapy). Viac v <a data-go="ochrana-udajov" href="#ochrana-udajov">ochrane osobných údajov</a>.</p>
+  <div class="cb-actions">
+    <button id="cbDecline">Len nevyhnutné</button>
+    <button class="acc" id="cbAccept">Prijať všetko</button>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -728,6 +801,7 @@
       <button data-go="omne">O mne</button><button data-go="sluzby">Služby</button><button data-go="kurzy">Kurzy</button><button data-go="cennik">Cenník</button><button data-go="galeria">Galéria</button><button data-go="kontakt">Kontakt</button>
     </nav>
     <div class="fb">© <span id="year"></span> Veronika Tóth · Pražská 11, Nitra · +421 903 810 610</div>
+    <div class="fb" style="margin-top:6px"><button data-go="ochrana-udajov" style="background:none;border:0;color:rgba(255,255,255,.55);cursor:pointer;font-family:var(--body);font-size:12px;letter-spacing:.04em;text-decoration:underline">Ochrana osobných údajov</button> · IČO: [doplniť]</div>
   </div>
 </footer>
 
@@ -757,6 +831,19 @@
         revealEls.forEach(function(el){ io.observe(el); });
       } else { revealEls.forEach(function(el){ el.classList.add('in'); }); }
     } catch(e){}
+
+    (function(){
+      var box=document.getElementById('mapBox');
+      function loadMap(){ if(!box) return; var ifr=box.querySelector('iframe'); if(ifr&&!ifr.src){ ifr.src=ifr.getAttribute('data-src'); ifr.hidden=false; } var ph=document.getElementById('mapPh'); if(ph) ph.hidden=true; }
+      var ml=document.getElementById('mapLoad'); if(ml) ml.addEventListener('click',loadMap);
+      var consent; try{consent=localStorage.getItem('vt-consent');}catch(e){}
+      if(consent==='yes') loadMap();
+      var bar=document.getElementById('cookiebar'); if(bar&&!consent) bar.hidden=false;
+      function setC(v){ try{localStorage.setItem('vt-consent',v);}catch(e){} if(bar) bar.hidden=true; if(v==='yes') loadMap(); }
+      var a=document.getElementById('cbAccept'), d=document.getElementById('cbDecline');
+      if(a) a.addEventListener('click',function(){setC('yes');});
+      if(d) d.addEventListener('click',function(){setC('no');});
+    })();
 
     var h=(location.hash||'').replace('#','');if(h)go(h);
   })();
