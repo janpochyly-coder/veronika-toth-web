@@ -103,6 +103,23 @@
   .svc .tag { font-size: 11px; letter-spacing:.14em; text-transform:uppercase; color: var(--muted); border:1px solid var(--line); padding: 6px 12px; white-space:nowrap; }
   .svc-more { max-width:820px; margin: 22px auto 0; text-align:left; color: var(--muted); font-size:14px; letter-spacing:.02em; }
   .svc-more strong { color: var(--ink); font-weight:600; }
+  /* služby – rozbaľovacie kategórie */
+  .svc-acc { max-width:840px; margin:0 auto; text-align:left; border-top:1px solid var(--line); }
+  details.cat { border-bottom:1px solid var(--line); }
+  details.cat > summary { list-style:none; cursor:pointer; display:flex; align-items:baseline; gap:12px; padding:26px 4px; }
+  details.cat > summary::-webkit-details-marker { display:none; }
+  .cat-h { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+  .cat-name { font-family:var(--display); font-size:26px; }
+  .cat-tag { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+  details.cat > summary::after { content:"+"; margin-left:auto; color:var(--gold); font-size:26px; line-height:1; font-family:var(--body); }
+  details.cat[open] > summary::after { content:"–"; }
+  .cat-body { padding:0 4px 24px; }
+  .cat-item { padding:14px 0; border-top:1px dashed var(--line); }
+  .cat-item:first-child { border-top:0; }
+  .ci-head { display:flex; justify-content:space-between; align-items:baseline; gap:16px; }
+  .ci-head h4 { font-family:var(--display); font-weight:500; font-size:19px; margin:0; }
+  .ci-price { font-family:var(--display); color:var(--gold); font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .cat-item p { margin:6px 0 0; color:var(--muted); font-size:14px; max-width:62ch; }
 
   /* about */
   .about { max-width: 720px; margin: 0 auto; }
@@ -301,14 +318,57 @@
   <div class="view" id="sluzby">
     <section>
       <div class="wrap">
-        <div class="head"><span class="kicker">Služby</span><h2>Zákroky na mieru</h2></div>
-        <div class="svc-list">
-          <div class="svc"><span class="no">01</span><div><h3>Obočie</h3><p>Powder Brows (púdrový efekt), Hair Stroke a Microblading (realistické vlásky) alebo ich kombinácia Combi Brows. Tvar aj odtieň navrhneme na mieru vašej tváre.</p></div><span class="tag">PMU · obočie</span></div>
-          <div class="svc"><span class="no">02</span><div><h3>Pery — Classy Lips</h3><p>Prirodzené dotvorenie kontúry, zjednotenie farby a jemné oživenie pier — bez efektu „namaľovaných".</p></div><span class="tag">PMU · pery</span></div>
-          <div class="svc"><span class="no">03</span><div><h3>Laserové ošetrenia</h3><p>Šetrné odstránenie nevyhovujúceho permanentu aj menších tetovaní a osviežujúci Carbon peel pre vyhladenú a rozjasnenú pleť.</p></div><span class="tag">Laser</span></div>
-          <div class="svc"><span class="no">04</span><div><h3>Lymfodrenáž</h3><p>Šetrná lymfatická drenáž tváre na podporu prekrvenia, odvodnenia a sviežeho vzhľadu.</p></div><span class="tag">Doplnková</span></div>
-          <div class="svc"><span class="no">05</span><div><h3>Manikúra</h3><p>Modelácia gélových nechtov, gél lak, klasická aj pánska manikúra — precízne a s dôrazom na detail.</p></div><span class="tag">Nechty</span></div>
-          <div class="svc"><span class="no">06</span><div><h3>Pedikúra</h3><p>Mokrá aj suchá pedikúra a modelácia nechtov — starostlivosť o nohy v príjemnom prostredí.</p></div><span class="tag">Nechty</span></div>
+        <div class="head"><span class="kicker">Služby</span><h2>Zákroky na mieru</h2><p>Kliknutím na kategóriu zobrazíte jednotlivé služby, ich popis a cenu.</p></div>
+        <div class="svc-acc">
+          <details class="cat" open>
+            <summary><span class="cat-h"><span class="cat-name">Obočie</span><span class="cat-tag">PMU · obočie</span></span></summary>
+            <div class="cat-body">
+              <div class="cat-item"><div class="ci-head"><h4>Powder Brows</h4><span class="ci-price">200 €</span></div><p>Púdrový, jemne tieňovaný efekt — ako zľahka podčiarknuté ceruzkou. Vhodné pre väčšinu typov pleti, výsledok pôsobí upravene a prirodzene.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Hair Stroke</h4><span class="ci-price">200 €</span></div><p>Realistické jednotlivé vlásky vytvárané strojčekovou technikou — ideálne, keď chcete čo najprirodzenejšie zahustené obočie.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Combi Brows</h4><span class="ci-price">230 €</span></div><p>Kombinácia púdrového tieňa a vláskov pre plný, no stále prirodzený výsledok.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Microblading</h4><span class="ci-price">200 €</span></div><p>Manuálne kreslené vlásky pre jemné dotvorenie tvaru a hustoty obočia.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Korekcia</h4><span class="ci-price">30 – 100 €</span></div><p>Doladenie výsledku po prvom sedení — cena podľa odstupu (do 3 mes. 30 €, do 6 mes. 60 €, do 1 roka 100 €).</p></div>
+            </div>
+          </details>
+          <details class="cat">
+            <summary><span class="cat-h"><span class="cat-name">Pery</span><span class="cat-tag">PMU · pery</span></span></summary>
+            <div class="cat-body">
+              <div class="cat-item"><div class="ci-head"><h4>Classy Lips</h4><span class="ci-price">200 €</span></div><p>Prirodzené dotvorenie kontúry, zjednotenie a oživenie farby pier — bez efektu „namaľovaných". Pery pôsobia zdravo a plnšie.</p></div>
+            </div>
+          </details>
+          <details class="cat">
+            <summary><span class="cat-h"><span class="cat-name">Laserové ošetrenia</span><span class="cat-tag">Laser</span></span></summary>
+            <div class="cat-body">
+              <div class="cat-item"><div class="ci-head"><h4>Odstránenie permanentného make-upu</h4><span class="ci-price">45 €</span></div><p>Šetrné, postupné odstránenie nevyhovujúceho permanentu laserom.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Odstránenie tetovania</h4><span class="ci-price">50 – 200 €</span></div><p>Cena podľa veľkosti a rozsahu tetovania; odstraňujeme postupne v niekoľkých sedeniach.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Carbon peel</h4><span class="ci-price">45 €</span></div><p>Ošetrenie tváre špeciálnou maskou a laserom — vyhladí, rozjasní a zjednotí tón pleti; vhodné aj na rozšírené póry.</p></div>
+            </div>
+          </details>
+          <details class="cat">
+            <summary><span class="cat-h"><span class="cat-name">Lymfodrenáž</span><span class="cat-tag">Doplnková</span></span></summary>
+            <div class="cat-body">
+              <div class="cat-item"><div class="ci-head"><h4>Lymfatická drenáž tváre</h4><span class="ci-price">30 €</span></div><p>Šetrná drenáž na podporu prekrvenia, odvodnenia a sviežeho vzhľadu pleti.</p></div>
+            </div>
+          </details>
+          <details class="cat">
+            <summary><span class="cat-h"><span class="cat-name">Manikúra</span><span class="cat-tag">Nechty</span></span></summary>
+            <div class="cat-body">
+              <div class="cat-item"><div class="ci-head"><h4>Modelácia gélových nechtov</h4><span class="ci-price">50 €</span></div><p>Vymodelovanie a spevnenie nechtov gélom vrátane tvaru a úpravy.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Gél lak / kaučuková báza</h4><span class="ci-price">35 €</span></div><p>Trvácny gél lak so spevňujúcou bázou pre zdravší vzhľad nechtov.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Klasická / pánska manikúra</h4><span class="ci-price">25 €</span></div><p>Úprava tvaru, nechtovej kožičky a ošetrenie rúk.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Zdobenie / ďalšia hodina</h4><span class="ci-price">25 €</span></div><p>Zdobenie a každá ďalšia začatá hodina práce.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Oprava nechtu</h4><span class="ci-price">35 € / 3,50 €</span></div><p>Oprava 1 nechtu samostatne, alebo 3,50 € pri dopĺňaní.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Odstránenie gélových nechtov</h4><span class="ci-price">20 – 30 €</span></div><p>Šetrné odstránenie — 20 €, z iného salónu 30 €.</p></div>
+            </div>
+          </details>
+          <details class="cat">
+            <summary><span class="cat-h"><span class="cat-name">Pedikúra</span><span class="cat-tag">Nechty</span></span></summary>
+            <div class="cat-body">
+              <div class="cat-item"><div class="ci-head"><h4>Mokrá pedikúra</h4><span class="ci-price">20 €</span></div><p>Klasická pedikúra s kúpeľom — úprava nechtov a ošetrenie chodidiel.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Suchá pedikúra</h4><span class="ci-price">20 €</span></div><p>Prístrojová suchá pedikúra bez namáčania.</p></div>
+              <div class="cat-item"><div class="ci-head"><h4>Modelácia gélových nechtov (nohy)</h4><span class="ci-price">30 €</span></div><p>Spevnenie a modelácia nechtov na nohách gélom.</p></div>
+            </div>
+          </details>
         </div>
         <div style="margin-top:40px"><a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a></div>
       </div>
