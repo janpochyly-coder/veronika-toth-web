@@ -1,0 +1,108 @@
+<title>Služby — Návrh 3 (menu + detail)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@300;400;500;600&display=swap">
+<style>
+  :root{--bg:#FDFBF7;--beige:#F5EFE4;--ink:#17130D;--muted:#786F60;--line:#E7DECE;--gold:#A9843C;--gold-2:#C7A567;--display:"Marcellus",Georgia,serif;--body:"Mulish",Arial,sans-serif;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+  h1,h3{font-family:var(--display);font-weight:400;margin:0}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+  .top{border-bottom:1px solid var(--line);text-align:center;padding:20px 0}
+  .top img{height:64px;width:auto}
+  .head{text-align:center;max-width:640px;margin:clamp(40px,6vw,72px) auto clamp(30px,4vw,44px)}
+  .kicker{font-size:11px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+  .head h1{font-size:clamp(32px,5vw,48px);margin-top:14px}
+  .head p{color:var(--muted);margin:14px auto 0;max-width:54ch}
+
+  .vtabs{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(24px,4vw,52px);border-top:1px solid var(--line);padding-top:26px}
+  .vmenu{display:flex;flex-direction:column;gap:2px}
+  .vmenu button{display:flex;align-items:center;gap:14px;background:none;border:0;border-left:2px solid transparent;cursor:pointer;text-align:left;padding:15px 14px;font-family:var(--display);font-size:20px;color:var(--muted);transition:color .2s,background .2s}
+  .vmenu button .ic{color:var(--muted);display:grid;place-items:center;transition:color .2s}
+  .vmenu button .ic svg{width:22px;height:22px;display:block}
+  .vmenu button:hover{color:var(--ink)}
+  .vmenu button.active{color:var(--ink);border-left-color:var(--gold);background:var(--beige)}
+  .vmenu button.active .ic{color:var(--gold)}
+
+  .vpanel{display:none;animation:fade .35s ease both}
+  .vpanel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .vpanel .kicker{display:block;margin-bottom:8px}
+  .vpanel h3{font-size:clamp(26px,4vw,38px);margin-bottom:14px}
+  .vpanel .short{color:var(--ink);font-size:17px;margin:0}
+  .vpanel .long p{color:var(--muted);font-size:14px;margin:14px 0 0}
+  .vpanel .long strong{color:var(--ink);font-weight:600}
+
+  .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:clamp(40px,6vw,64px) 0}
+  .btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--body);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;padding:14px 30px;border:1px solid var(--ink);color:var(--ink);cursor:pointer;transition:background .25s,color .25s}
+  .btn:hover{background:var(--ink);color:var(--bg)}
+  .btn.gold{border-color:var(--gold);background:var(--gold-2);color:#2a2010}
+  .btn.gold:hover{background:var(--gold);color:#fff}
+  .switch{border-top:1px solid var(--line);text-align:center;padding:26px 0 40px;font-size:12px;color:var(--muted)}
+  .switch a{color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:600;margin:0 10px;display:inline-block}
+  .switch a.active{color:var(--ink)}
+  @media (max-width:760px){
+    .vtabs{grid-template-columns:1fr;gap:18px}
+    .vmenu{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:6px}
+    .vmenu button{border-left:0;border-bottom:2px solid transparent;font-size:15px;padding:10px 12px}
+    .vmenu button.active{border-left:0;border-bottom-color:var(--gold)}
+    .vmenu button .ic svg{width:18px;height:18px}
+  }
+</style>
+
+<div class="top"><a href="index.html"><img src="images/logo.png" alt="Veronika Tóth"></a></div>
+
+<div class="wrap">
+  <div class="head">
+    <span class="kicker">Služby · Návrh 3</span>
+    <h1>Zákroky na mieru</h1>
+    <p>Vyberte si kategóriu a zobrazí sa jej popis. Ceny nájdete prehľadne v cenníku.</p>
+  </div>
+
+  <div class="vtabs">
+    <div class="vmenu" id="vmenu">
+      <button class="active" data-p="p1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 15c4-6 14-6 18-1"/><path d="M6.5 13l-1-2"/><path d="M10.5 11.6l-.6-2.2"/><path d="M14 11.2l.5-2.2"/><path d="M17.6 12.2l1.2-1.9"/></svg></span>Obočie</button>
+      <button data-p="p2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3 11c3-3 6-3 9 0 3-3 6-3 9 0-2 3.6-6 5-9 5s-7-1.4-9-5z"/><path d="M3 11h18"/></svg></span>Pery</button>
+      <button data-p="p3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z"/></svg></span>Laserové ošetrenia</button>
+      <button data-p="p4"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3s6 6.5 6 10.5a6 6 0 0 1-12 0C6 9.5 12 3 12 3z"/></svg></span>Lymfodrenáž</button>
+      <button data-p="p5"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M10 3h4v2.5h-4z"/><path d="M9.5 8.5c0-1.6 1-3 2.5-3s2.5 1.4 2.5 3v8.5a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M9.5 12h5"/></svg></span>Manikúra</button>
+      <button data-p="p6"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M9 4C6.5 4 5 6.5 5 10c0 2.5 1 4 1 6.5 0 2 1.5 3.2 3.5 3.2s3-1.6 3-3.6c0-2 .6-3 .6-5.1"/><circle cx="15.5" cy="6" r="1"/><circle cx="17.6" cy="8.6" r="1"/><circle cx="18.2" cy="11.6" r="1"/></svg></span>Pedikúra</button>
+    </div>
+
+    <div class="vpanels">
+      <div class="vpanel active" id="p1"><span class="kicker">PMU · obočie</span><h3>Obočie</h3><p class="short">Permanentný make-up obočia, ktorý vyzerá úplne prirodzene — jemné vlásky alebo púdrový tieň, vždy na mieru vašej tvári.</p><div class="long"><p><strong>Powder Brows</strong> dodá jemný púdrový efekt, <strong>Hair Stroke</strong> a <strong>Microblading</strong> realistické vlásky a <strong>Combi Brows</strong> obe techniky spája.</p><p>Techniku volíme podľa typu pleti a želaného vzhľadu; súčasťou je konzultácia a kontrolné doladenie.</p></div></div>
+      <div class="vpanel" id="p2"><span class="kicker">PMU · pery</span><h3>Pery — Classy Lips</h3><p class="short">Prirodzené dotvorenie kontúry a oživenie farby pier — bez efektu „namaľovaných".</p><div class="long"><p>Metóda <strong>Classy Lips</strong> jemne zvýrazní tvar pier, zjednotí ich farbu a dodá im sviežosť. Pery pôsobia zdravo a plnšie, no stále úplne prirodzene.</p><p>Odtieň vyberáme spoločne podľa vášho typu a predstáv.</p></div></div>
+      <div class="vpanel" id="p3"><span class="kicker">Laser</span><h3>Laserové ošetrenia</h3><p class="short">Šetrné odstránenie nevyhovujúceho permanentu a menších tetovaní — a osviežujúci Carbon peel pre pleť.</p><div class="long"><p><strong>Odstránenie PMU a tetovaní</strong> prebieha postupne v niekoľkých sedeniach, aby bola pokožka čo najviac šetrená.</p><p><strong>Carbon peel</strong> špeciálnou maskou a laserom vyhladí a rozjasní pleť, zjednotí tón a pomáha aj pri rozšírených póroch.</p></div></div>
+      <div class="vpanel" id="p4"><span class="kicker">Doplnková</span><h3>Lymfodrenáž</h3><p class="short">Šetrná lymfatická drenáž tváre pre sviežejší a oddýchnutý vzhľad.</p><div class="long"><p>Podporuje prekrvenie a odvodnenie pokožky, pomáha znižovať opuchy a dodáva tvári sviežosť. Príjemné ošetrenie, ktoré krásne dopĺňa starostlivosť o pleť.</p></div></div>
+      <div class="vpanel" id="p5"><span class="kicker">Nechty</span><h3>Manikúra</h3><p class="short">Precízna starostlivosť o ruky a nechty — od klasickej manikúry po modeláciu gélom.</p><div class="long"><p>Ponúkam <strong>modeláciu gélových nechtov</strong>, <strong>gél lak</strong> so spevňujúcou kaučukovou bázou, <strong>klasickú aj pánsku manikúru</strong> a zdobenie podľa vašich predstáv.</p><p>Postarám sa aj o opravu či šetrné odstránenie nechtov.</p></div></div>
+      <div class="vpanel" id="p6"><span class="kicker">Nechty</span><h3>Pedikúra</h3><p class="short">Starostlivosť o nohy v príjemnom prostredí — mokrá aj suchá pedikúra a modelácia.</p><div class="long"><p><strong>Mokrá pedikúra</strong> s kúpeľom aj <strong>suchá (prístrojová) pedikúra</strong> upravia nechty a chodidlá do dokonalosti. Doplniť ju môžete <strong>modeláciou nechtov na nohách</strong>.</p></div></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a>
+    <a class="btn" href="index.html#cennik">Pozrieť cenník</a>
+  </div>
+</div>
+
+<div class="switch">
+  Návrhy stránky Služby:
+  <a href="sluzby-1.html">1 · Zoznam</a>
+  <a href="sluzby-2.html">2 · Karty</a>
+  <a href="sluzby-3.html" class="active">3 · Menu + detail</a>
+</div>
+
+<script>
+  (function(){
+    var menu=document.getElementById('vmenu');
+    var btns=menu.querySelectorAll('button');
+    var panels=document.querySelectorAll('.vpanel');
+    menu.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      btns.forEach(function(x){x.classList.toggle('active',x===b);});
+      panels.forEach(function(p){p.classList.toggle('active',p.id===b.dataset.p);});
+    });
+  })();
+</script>
