@@ -301,6 +301,7 @@
   footer { background: var(--ink); color: var(--bg); text-align:center; padding-block: 56px 34px; }
   footer .name { font-family: var(--display); letter-spacing:.2em; text-transform:uppercase; font-size: 20px; }
   footer .sub { font-size: 11px; letter-spacing:.3em; text-transform:uppercase; color: rgba(255,255,255,.5); margin-top: 8px; }
+  .foot-logo { height: clamp(120px, 18vw, 165px); width:auto; display:block; margin:0 auto; cursor:pointer; }
   footer nav { display:flex; gap: 20px; justify-content:center; flex-wrap:wrap; margin: 26px 0; }
   footer nav button { background:none;border:0;color:rgba(255,255,255,.7);cursor:pointer;font-family:var(--body);font-size:12px;letter-spacing:.08em; }
   footer nav button:hover{color:var(--gold-2);}
@@ -808,8 +809,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="name" data-go="uvod" style="cursor:pointer">Veronika Tóth</div>
-    <div class="sub">Permanent make-up · Nitra</div>
+    <img class="foot-logo" src="images/logo-white.png" alt="Veronika Tóth — permanent make-up" data-go="uvod">
     <nav>
       <button data-go="omne">O mne</button><button data-go="sluzby">Služby</button><button data-go="kurzy">Kurzy</button><button data-go="cennik">Cenník</button><button data-go="galeria">Galéria</button><button data-go="kontakt">Kontakt</button>
     </nav>
