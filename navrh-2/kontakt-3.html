@@ -1,0 +1,101 @@
+<title>Kontakt — Návrh 3 (centrovaný)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@300;400;500;600&display=swap">
+<style>
+  :root{--bg:#FDFBF7;--white:#fff;--beige:#F5EFE4;--beige-2:#ECE2D0;--ink:#17130D;--muted:#786F60;--line:#E7DECE;--gold:#A9843C;--gold-2:#C7A567;--display:"Marcellus",Georgia,serif;--body:"Mulish",Arial,sans-serif;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+  [hidden]{display:none!important}
+  h1,h2,h3{font-family:var(--display);font-weight:400;margin:0}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+  .top{border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:12px;padding:16px 0}
+  .top img{height:46px;width:auto}
+  .top .bn{font-family:var(--display);font-size:18px;letter-spacing:.14em;text-transform:uppercase}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--body);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;padding:15px 34px;border:1px solid var(--ink);color:var(--ink);cursor:pointer;transition:background .25s,color .25s}
+  .btn:hover{background:var(--ink);color:var(--bg)}
+  .btn.gold{border-color:var(--gold);background:var(--gold-2);color:#2a2010}
+  .btn.gold:hover{background:var(--gold);color:#fff}
+  form{display:grid;gap:14px}
+  form label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  form input,form textarea{width:100%;background:var(--white);border:1px solid var(--line);padding:12px 14px;font-family:var(--body);font-size:15px;color:var(--ink)}
+  form input:focus,form textarea:focus{outline:1px solid var(--gold);border-color:transparent}
+
+  .hero{text-align:center;max-width:640px;margin:clamp(48px,8vw,90px) auto clamp(30px,5vw,46px)}
+  .hero .kicker{font-size:11px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+  .hero h1{font-size:clamp(40px,7vw,72px);line-height:1.06;margin:16px 0 0}
+  .hero h1 span{display:block;font-style:italic;font-family:Georgia,serif;color:var(--gold);font-size:.42em;margin-top:14px}
+  .hero p{color:var(--muted);margin:22px auto 0;max-width:48ch}
+
+  .lines{max-width:620px;margin:clamp(30px,5vw,44px) auto 0}
+  .line{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 0;border-top:1px solid var(--line);text-align:center;flex-wrap:wrap}
+  .lines .line:last-child{border-bottom:1px solid var(--line)}
+  .line .ic{color:var(--gold);flex:none}
+  .line .k{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-right:4px}
+  .line .v{font-size:17px}
+  .line .v small{color:var(--muted);font-size:14px}
+  .cta{text-align:center;margin:clamp(32px,5vw,44px) 0}
+  .cta .sub{display:block;color:var(--muted);font-size:13px;margin-top:14px}
+  .cta .sub a{color:var(--gold);text-decoration:underline}
+
+  .band{background:var(--beige);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:clamp(40px,6vw,64px);padding:clamp(40px,6vw,64px) 0}
+  .band h2{text-align:center;font-size:clamp(26px,4vw,34px);margin-bottom:6px}
+  .band .sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:28px}
+  .form-slim{max-width:520px;margin:0 auto}
+  .map{max-width:960px;margin:clamp(40px,6vw,60px) auto 0;border:1px solid var(--line)}
+  .map iframe{display:block;width:100%;height:440px;border:0}
+
+  .switch{border-top:1px solid var(--line);text-align:center;padding:26px 0 40px;font-size:12px;color:var(--muted);margin-top:44px}
+  .switch a{color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:600;margin:0 10px;display:inline-block}
+  .switch a.active{color:var(--ink)}
+  @media(max-width:600px){ .map iframe{height:320px} }
+</style>
+
+<div class="top"><a href="index.html" style="display:flex;align-items:center;gap:12px"><img src="images/logo-mark.png" alt="Veronika Tóth"><span class="bn">Veronika Tóth</span></a></div>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="kicker">Kontakt · Návrh 3</span>
+    <h1>Napíšte mi<span>— rada vás privítam v salóne.</span></h1>
+    <p>Salón krásy na Pražskej 11 v Nitre. Objednať sa môžete online, telefonicky alebo cez formulár nižšie.</p>
+  </div>
+
+  <div class="lines">
+    <div class="line"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="v">Pražská 11, Nitra</span></div>
+    <div class="line"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L16 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z"/></svg></span><span class="v"><a href="tel:+421903810610">+421 903 810 610</a></span></div>
+    <div class="line"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="v"><a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a></span></div>
+    <div class="line"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="v">Podľa online rezervácie <small>· storno min. 24 h vopred</small></span></div>
+  </div>
+
+  <div class="cta">
+    <a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a>
+    <span class="sub">alebo ma sledujte na <a href="https://www.instagram.com/veronikatoth_phibrows/" target="_blank" rel="noopener">@veronikatoth_phibrows</a></span>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap">
+    <h2>Napíšte mi správu</h2>
+    <div class="sub">Ozvem sa vám čo najskôr.</div>
+    <form class="form-slim" id="cf">
+      <div><label for="c-name">Meno</label><input id="c-name" type="text" required></div>
+      <div><label for="c-phone">Telefón</label><input id="c-phone" type="tel"></div>
+      <div><label for="c-msg">Správa</label><textarea id="c-msg" rows="4"></textarea></div>
+      <button class="btn gold" type="submit" style="justify-self:center">Odoslať dopyt</button>
+    </form>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="map"><iframe title="Mapa — Pražská 11, Nitra" src="https://www.google.com/maps?q=Pra%C5%BEsk%C3%A1%2011%2C%20Nitra&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+</div>
+
+<div class="switch">Návrhy stránky Kontakt: <a href="kontakt-1.html">1 · Split</a> <a href="kontakt-2.html">2 · Karty</a> <a href="kontakt-3.html" class="active">3 · Centrovaný</a></div>
+
+<script>
+  var cf=document.getElementById('cf');
+  if(cf)cf.addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('c-name').value||'',p=document.getElementById('c-phone').value||'',m=document.getElementById('c-msg').value||'';window.location.href='mailto:pmutoth@gmail.com?subject='+encodeURIComponent('Dopyt z webu — '+n)+'&body='+encodeURIComponent('Meno: '+n+'\nTelefón: '+p+'\n\n'+m);});
+</script>
