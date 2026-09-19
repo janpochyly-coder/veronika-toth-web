@@ -831,7 +831,7 @@
     var cf=document.getElementById('cf');if(cf){cf.addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('c-name').value||'',p=document.getElementById('c-phone').value||'',m=document.getElementById('c-msg').value||'';window.location.href='mailto:pmutoth@gmail.com?subject='+encodeURIComponent('Dopyt z webu — '+n)+'&body='+encodeURIComponent('Meno: '+n+'\nTelefón: '+p+'\n\n'+m);});}
     document.getElementById('year').textContent=new Date().getFullYear();
     var navEl=document.querySelector('header.nav');
-    var onScroll=function(){ if(navEl) navEl.classList.toggle('shrink', window.scrollY>24); };
+    var onScroll=function(){ if(!navEl) return; var y=window.pageYOffset||document.documentElement.scrollTop||0; if(!navEl.classList.contains('shrink')){ if(y>140) navEl.classList.add('shrink'); } else { if(y<80) navEl.classList.remove('shrink'); } };
     window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
     // jemné odhalenie pri scrolle
