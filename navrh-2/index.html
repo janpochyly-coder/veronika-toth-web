@@ -97,6 +97,16 @@
   .ph video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
   .gal-sub { font-family:var(--display); font-size:22px; text-align:left; margin:clamp(28px,4vw,40px) 0 14px; }
   .gal-sub:first-of-type { margin-top:0; }
+  .gal .frame { cursor:pointer; }
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:300;background:rgba(20,16,12,.93);display:flex;align-items:center;justify-content:center;}
+  .lb-stage{max-width:90vw;max-height:86vh;display:flex;align-items:center;justify-content:center;}
+  .lb-stage img,.lb-stage video{max-width:90vw;max-height:86vh;object-fit:contain;display:block;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+  .lb-close{position:absolute;top:14px;right:20px;background:none;border:0;color:#fff;font-size:34px;line-height:1;cursor:pointer;}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;font-size:46px;line-height:1;cursor:pointer;padding:10px 18px;opacity:.82;}
+  .lb-nav:hover{opacity:1;}
+  .lb-prev{left:6px;} .lb-next{right:6px;}
+  @media(max-width:600px){ .lb-nav{font-size:36px;padding:8px 8px;} }
 
   /* logo v hlavičke */
   .brand .logo-mark { height:62px; width:auto; display:block; }
@@ -163,8 +173,8 @@
   .vrow .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
   .vrow .lead2{color:var(--muted);font-size:15px;margin:6px 0 0;max-width:60ch;}
   /* služby – ikonové karty */
-  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .vcard{border:1px solid var(--line);background:#fff;padding:32px 26px;text-align:center;display:flex;flex-direction:column;align-items:center;transition:border-color .3s,transform .3s;}
+  .vgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;}
+  .vcard{flex:0 1 300px;max-width:340px;border:1px solid var(--line);background:#fff;padding:32px 26px;text-align:center;display:flex;flex-direction:column;align-items:center;transition:border-color .3s,transform .3s;}
   .vcard:hover{border-color:var(--gold);transform:translateY(-3px);}
   .vcard .ic{width:62px;height:62px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;color:var(--gold);}
   .vcard .ic svg{width:28px;height:28px;}
@@ -643,6 +653,13 @@
   </div>
 </main>
 
+<div class="lb" id="lightbox" hidden>
+  <button class="lb-close" id="lbClose" aria-label="Zavrieť">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Predchádzajúce">&lsaquo;</button>
+  <div class="lb-stage" id="lbStage"></div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Ďalšie">&rsaquo;</button>
+</div>
+
 <div class="cookiebar" id="cookiebar" hidden>
   <p>Táto stránka používa nevyhnutné cookies a po vašom súhlase aj obsah tretích strán (Google Mapy). Viac v <a data-go="ochrana-udajov" href="#ochrana-udajov">ochrane osobných údajov</a>.</p>
   <div class="cb-actions">
@@ -703,6 +720,23 @@
       var a=document.getElementById('cbAccept'), d=document.getElementById('cbDecline');
       if(a) a.addEventListener('click',function(){setC('yes');});
       if(d) d.addEventListener('click',function(){setC('no');});
+    })();
+
+    (function(){
+      var tiles=[].slice.call(document.querySelectorAll('#galeria .frame'));
+      if(!tiles.length) return;
+      var media=tiles.map(function(t){var v=t.querySelector('video'),im=t.querySelector('img');return v?{type:'video',src:v.getAttribute('src')}:{type:'img',src:im.getAttribute('src'),alt:(im.getAttribute('alt')||'')};});
+      var lb=document.getElementById('lightbox'),stage=document.getElementById('lbStage'),idx=0;
+      function render(){ var m=media[idx]; stage.innerHTML=''; var el; if(m.type==='video'){el=document.createElement('video');el.src=m.src;el.autoplay=true;el.loop=true;el.muted=true;el.playsInline=true;el.setAttribute('controls','');}else{el=document.createElement('img');el.src=m.src;el.alt=m.alt;} stage.appendChild(el); }
+      function open(i){ idx=i; render(); lb.hidden=false; }
+      function close(){ lb.hidden=true; stage.innerHTML=''; }
+      function nav(d){ idx=(idx+d+media.length)%media.length; render(); }
+      tiles.forEach(function(t,i){ t.addEventListener('click',function(){ open(i); }); });
+      document.getElementById('lbClose').addEventListener('click',close);
+      document.getElementById('lbPrev').addEventListener('click',function(e){e.stopPropagation();nav(-1);});
+      document.getElementById('lbNext').addEventListener('click',function(e){e.stopPropagation();nav(1);});
+      lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+      document.addEventListener('keydown',function(e){ if(lb.hidden) return; if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') nav(-1); else if(e.key==='ArrowRight') nav(1); });
     })();
 
     var h=(location.hash||'').replace('#','');if(h)go(h);
