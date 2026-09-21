@@ -1,0 +1,112 @@
+<title>Ukážka úpravy obsahu (CMS)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@300;400;500;600&display=swap">
+<style>
+  :root{--bg:#FDFBF7;--white:#fff;--beige:#F5EFE4;--ink:#17130D;--muted:#786F60;--line:#E7DECE;--gold:#A9843C;--gold-2:#C7A567;--display:"Marcellus",Georgia,serif;--body:"Mulish",Arial,sans-serif;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);font-weight:400;margin:0}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+  .head{text-align:center;margin:clamp(28px,5vw,52px) auto clamp(20px,3vw,32px);max-width:640px}
+  .kicker{font-size:11px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+  .head h1{font-size:clamp(28px,4vw,40px);margin-top:12px}
+  .head p{color:var(--muted);margin-top:12px}
+
+  /* admin bar */
+  .abar{background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-radius:8px 8px 0 0;flex-wrap:wrap}
+  .abar .brand{font-family:var(--display);letter-spacing:.14em;text-transform:uppercase;font-size:14px}
+  .abar .brand small{display:block;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.6)}
+  .pub{background:var(--gold-2);color:#2a2010;border:0;cursor:pointer;font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:11px 20px;border-radius:100px}
+  .pub:hover{background:var(--gold);color:#fff}
+
+  .panes{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-top:0;border-radius:0 0 8px 8px;overflow:hidden}
+  .edit{padding:22px;border-right:1px solid var(--line);background:var(--white)}
+  .prev{padding:0;background:var(--bg)}
+  .paneh{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  label{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+  input,textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:11px 13px;font-family:var(--body);font-size:15px;color:var(--ink)}
+  input:focus,textarea:focus{outline:2px solid var(--gold-2);border-color:transparent}
+  .drop{border:1px dashed var(--gold);border-radius:8px;padding:16px;text-align:center;color:var(--muted);font-size:13px;cursor:pointer;background:#fffdf8}
+  .drop:hover{background:var(--beige)}
+  .drop input{display:none}
+
+  /* live preview mini-site */
+  .site{padding:26px 22px}
+  .site .s-kick{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+  .site h2{font-size:clamp(24px,3.4vw,34px);margin:10px 0 0;line-height:1.1}
+  .site h2 em{font-style:italic;color:var(--gold)}
+  .site .s-img{margin-top:16px;border:1px solid var(--line);border-radius:6px;width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:linear-gradient(160deg,#ECE2D0,#C7A567)}
+  .site p{color:var(--muted);margin-top:14px;font-size:15px}
+  .badge{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.85);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6a5a34;padding:5px 10px;border-radius:100px}
+  .prev-wrap{position:relative}
+  .prev-tag{position:absolute;top:10px;right:12px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:14px 22px;border-radius:100px;font-size:13px;opacity:0;transition:opacity .3s,transform .3s;z-index:50;box-shadow:0 14px 34px -18px rgba(0,0,0,.5)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .toast b{color:var(--gold-2)}
+
+  .flow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:26px 0 44px}
+  .flow .step{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}
+  .flow .n{width:26px;height:26px;border-radius:50%;border:1px solid var(--gold);color:var(--gold-2);display:grid;place-items:center;font-family:var(--display);font-size:13px}
+  .flow .arr{color:var(--gold);}
+  @media(max-width:760px){ .panes{grid-template-columns:1fr} .edit{border-right:0;border-bottom:1px solid var(--line)} .flow .step{width:100%;justify-content:center} .flow .arr{display:none} }
+</style>
+
+<div class="wrap">
+  <div class="head">
+    <span class="kicker">Ukážka · takto edituje klientka</span>
+    <h1>Úprava obsahu bez kódu</h1>
+    <p>Toto je len ukážka rozhrania (Variant A). Píšte do polí vľavo — vpravo sa hneď mení náhľad webu. Po „Publikovať" sa web sám aktualizuje.</p>
+  </div>
+
+  <div class="abar">
+    <div class="brand">Veronika Tóth<small>Správa obsahu · /admin</small></div>
+    <button class="pub" id="pub">Publikovať zmeny</button>
+  </div>
+  <div class="panes">
+    <div class="edit">
+      <div class="paneh">Úprava</div>
+      <label for="f-kick">Malý nadpis</label>
+      <input id="f-kick" value="Salón krásy · Nitra">
+      <label for="f-title">Hlavný nadpis</label>
+      <input id="f-title" value="Vitajte v mojom salóne">
+      <label for="f-text">Text</label>
+      <textarea id="f-text" rows="4">Kráse sa venujem už od roku 2005. Nájdete u mňa permanentný make-up, nechty aj pleťové ošetrenia.</textarea>
+      <label>Obrázok</label>
+      <label class="drop" for="f-img">📷 Kliknite a nahrajte fotku (alebo sem presuňte)<input id="f-img" type="file" accept="image/*"></label>
+    </div>
+    <div class="prev prev-wrap">
+      <span class="prev-tag">Náhľad webu</span>
+      <div class="site">
+        <div class="s-kick" id="p-kick">Salón krásy · Nitra</div>
+        <h2 id="p-title">Vitajte v <em>mojom salóne</em></h2>
+        <img class="s-img" id="p-img" alt="">
+        <p id="p-text">Kráse sa venujem už od roku 2005. Nájdete u mňa permanentný make-up, nechty aj pleťové ošetrenia.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow">
+    <div class="step"><span class="n">1</span> Prihlásenie na /admin</div><span class="arr">→</span>
+    <div class="step"><span class="n">2</span> Úprava textov a fotiek</div><span class="arr">→</span>
+    <div class="step"><span class="n">3</span> Publikovať</div><span class="arr">→</span>
+    <div class="step"><span class="n">4</span> Web sa sám aktualizuje (~1 min)</div>
+  </div>
+</div>
+
+<div class="toast" id="toast">✓ Uložené · <b>web sa aktualizuje…</b></div>
+
+<script>
+  var t=document.getElementById('f-title'), k=document.getElementById('f-kick'), x=document.getElementById('f-text');
+  function esc(s){return s.replace(/</g,'&lt;');}
+  function up(){ document.getElementById('p-kick').textContent=k.value;
+    var parts=t.value.trim().split(' '); var last=parts.length>1?parts.pop():'';
+    document.getElementById('p-title').innerHTML=esc(parts.join(' '))+(last?' <em>'+esc(last)+'</em>':'');
+    document.getElementById('p-text').textContent=x.value; }
+  [t,k,x].forEach(function(el){el.addEventListener('input',up);}); up();
+  document.getElementById('f-img').addEventListener('change',function(e){ var f=e.target.files[0]; if(!f)return; var r=new FileReader(); r.onload=function(){document.getElementById('p-img').src=r.result;}; r.readAsDataURL(f); });
+  document.getElementById('pub').addEventListener('click',function(){ var el=document.getElementById('toast'); el.classList.add('show'); setTimeout(function(){el.classList.remove('show');},2600); });
+</script>
