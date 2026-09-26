@@ -2,11 +2,11 @@
 <html lang="sk">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Veronika Tóth — salón krásy Nitra</title>
-<meta name="description" content="Salón krásy v Nitre — permanentný make-up, manikúra, pedikúra, laserové a pleťové ošetrenia. Od roku 2005. Online rezervácia.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317130D'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='15' fill='%23C7A567' text-anchor='middle'%3EVT%3C/text%3E%3C/svg%3E">
+<title>{{ page.header.site_title|default('Veronika Tóth — salón krásy Nitra') }}</title>
+<meta name="description" content="{{ page.header.site_desc|default('Salón krásy v Nitre — permanentný make-up, manikúra, pedikúra, laserové a pleťové ošetrenia. Od roku 2005. Online rezervácia.') }}">
+{% set fav = page.media[page.header.favicon] %}<link rel="icon" href="{{ fav ? fav.url : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317130D'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='15' fill='%23C7A567' text-anchor='middle'%3EVT%3C/text%3E%3C/svg%3E" }}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Veronika Tóth — salón krásy Nitra">
+<meta property="og:title" content="{{ page.header.site_title|default('Veronika Tóth — salón krásy Nitra') }}">
 <meta property="og:description" content="Salón krásy v Nitre — permanentný make-up, nechty, laserové a pleťové ošetrenia. Od roku 2005.">
 <meta property="og:image" content="https://janpochyly-coder.github.io/veronika-toth-web/navrh-2/images/hero.jpg">
 <meta property="og:url" content="https://janpochyly-coder.github.io/veronika-toth-web/navrh-2/">
@@ -19,7 +19,7 @@
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <div class="brand" data-go="uvod"><img class="logo-mark" src="{{ theme_url }}/images/logo-mark.png" alt="Veronika Tóth"><span class="brand-txt"><span class="bn">Veronika Tóth</span><span class="bs">Salón krásy · Nitra</span></span></div>
+    <div class="brand" data-go="uvod"><img class="logo-mark" src="{% set lm = page.media[page.header.logo] %}{{ lm ? lm.url : theme_url ~ '/images/logo-mark.png' }}" alt="{{ page.header.brand_name|default('Veronika Tóth') }}"><span class="brand-txt"><span class="bn">{{ page.header.brand_name|default('Veronika Tóth') }}</span><span class="bs">{{ page.header.brand_sub|default('Salón krásy · Nitra') }}</span></span></div>
     <button class="menu-toggle" id="menuBtn" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     <nav class="links" id="navlinks">
       <button data-go="uvod" class="active">Úvod</button>
@@ -38,7 +38,7 @@
     <section class="intro">
       <img class="intro-logo" src="{{ theme_url }}/images/logo-full.png" alt="" aria-hidden="true">
       <div class="wrap intro-grid">
-        <div class="intro-photo frame"><div class="ph tall"><img src="{% set ip = page.media[page.header.intro_photo] %}{{ ip ? ip.url : theme_url ~ '/images/veronika.jpg' }}" alt="Veronika Tóth — salón krásy Nitra"></div></div>
+        <div class="intro-photo frame"><div class="ph tall"><img src="{% set ip = page.media[page.header.intro_photo] %}{{ ip ? ip.url : theme_url ~ '/images/veronika.jpg' }}" alt="{{ page.header.site_title|default('Veronika Tóth — salón krásy Nitra') }}"></div></div>
         <div class="intro-txt">
           <span class="kicker">{{ page.header.intro_kicker }}</span>
           <h1>{{ page.header.intro_title }} <em>{{ page.header.intro_title_em }}</em></h1>
@@ -82,11 +82,12 @@
       <div class="wrap">
         <span class="kicker" style="display:block;margin-bottom:6px">Referencie</span>
         <div class="rmini">
-          <div class="rq"><div class="stars">★★★★★</div><p>„Konečne obočie, ktoré vyzerá úplne prirodzene. Ráno ušetrím kopu času."</p><span>— Martina K.</span></div>
-          <div class="rq"><div class="stars">★★★★★</div><p>„Profesionálka telom aj dušou. Výsledok predčil moje očakávania."</p><span>— Lucia B.</span></div>
+        {% for r in page.header.reviews %}
+          <div class="rq"><div class="stars">★★★★★</div><p>„{{ r.text }}"</p><span>— {{ r.author }}</span></div>
+        {% endfor %}
         </div>
-        <p class="pnote" style="margin-top:20px">Hodnotenia spokojných klientok</p>
-        <div style="text-align:center;margin-top:14px"><a class="btn" href="https://share.google/l2OJdri5wWEotfM0E" target="_blank" rel="noopener">Recenzie na Google</a></div>
+        <p class="pnote" style="margin-top:20px">{{ page.header.reviews_note|default('Hodnotenia spokojných klientok') }}</p>
+        {% if page.header.reviews_google %}<div style="text-align:center;margin-top:14px"><a class="btn" href="{{ page.header.reviews_google }}" target="_blank" rel="noopener">Recenzie na Google</a></div>{% endif %}
       </div>
     </section>
   </div>
@@ -256,11 +257,11 @@
 
 <footer>
   <div class="wrap">
-    <img class="foot-logo" src="{{ theme_url }}/images/logo-white.png" alt="Veronika Tóth — permanent make-up" data-go="uvod">
+    <img class="foot-logo" src="{% set fl = page.media[page.header.logo_footer] %}{{ fl ? fl.url : theme_url ~ '/images/logo-white.png' }}" alt="{{ page.header.brand_name|default('Veronika Tóth') }}" data-go="uvod">
     <nav>
       <button data-go="sluzby">Služby</button><button data-go="kurzy">Kurzy</button><button data-go="cennik">Cenník</button><button data-go="galeria">Galéria</button><button data-go="kontakt">Kontakt</button>
     </nav>
-    <a class="foot-ig" href="https://www.instagram.com/veronikatoth_phibrows/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg> @veronikatoth_phibrows</a>
+    <a class="foot-ig" href="https://www.instagram.com/{{ page.header.c_ig|replace({'@':''}) }}/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg> @veronikatoth_phibrows</a>
     <div class="fb">© <span id="year"></span> Veronika Tóth · Pražská 11, Nitra · +421 903 810 610</div>
     <div class="fb" style="margin-top:6px"><button data-go="ochrana-udajov" style="background:none;border:0;color:rgba(255,255,255,.55);cursor:pointer;font-family:var(--body);font-size:12px;letter-spacing:.04em;text-decoration:underline">Ochrana osobných údajov</button> · IČO: [doplniť]</div>
   </div>

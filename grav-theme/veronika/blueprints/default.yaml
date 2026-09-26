@@ -7,6 +7,17 @@ form:
     tabs:
       type: tabs
       fields:
+        tab_znacka:
+          type: tab
+          title: 'Značka'
+          fields:
+            header.brand_name: { type: text, label: 'Názov salónu' }
+            header.brand_sub: { type: text, label: 'Podnadpis (napr. Salón krásy · Nitra)' }
+            header.logo: { type: file, label: 'Logo (hlavička)', destination: 'self@', accept: ['image/*'] }
+            header.logo_footer: { type: file, label: 'Logo (pätička, svetlé)', destination: 'self@', accept: ['image/*'] }
+            header.favicon: { type: file, label: 'Favicon (ikona v záložke)', destination: 'self@', accept: ['image/*'] }
+            header.site_title: { type: text, label: 'Titulok webu (záložka / Google)' }
+            header.site_desc: { type: textarea, label: 'Popis webu (Google / zdieľanie)', rows: 2 }
         tab_uvod:
           type: tab
           title: Úvod
@@ -114,6 +125,18 @@ form:
             header.kurzy_title: { type: text, label: 'Kurzy – nadpis' }
             header.kurzy_lead: { type: textarea, label: 'Kurzy – úvodný text', rows: 3 }
             header.kurzy_note: { type: textarea, label: 'Kurzy – poznámka', rows: 2 }
+        tab_recenzie:
+          type: tab
+          title: 'Recenzie'
+          fields:
+            header.reviews:
+              type: list
+              label: 'Recenzie (pásik na úvode)'
+              fields:
+                .text: { type: textarea, label: 'Text recenzie (bez úvodzoviek)', rows: 2 }
+                .author: { type: text, label: 'Autor (napr. Martina K.)' }
+            header.reviews_note: { type: text, label: 'Popisok pod recenziami' }
+            header.reviews_google: { type: text, label: 'Odkaz na Google recenzie (prázdne = skryť tlačidlo)' }
         tab_pravne:
           type: tab
           title: 'GDPR'

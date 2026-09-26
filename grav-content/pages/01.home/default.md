@@ -1,6 +1,15 @@
 ---
 title: Domov
 cache_enable: false
+site_title: 'Veronika Tóth — salón krásy Nitra'
+site_desc: 'Salón krásy v Nitre — permanentný make-up, manikúra, pedikúra, laserové a pleťové ošetrenia. Od roku 2005. Online rezervácia.'
+brand_name: 'Veronika Tóth'
+brand_sub: 'Salón krásy · Nitra'
+reviews_note: 'Hodnotenia spokojných klientok'
+reviews_google: 'https://share.google/l2OJdri5wWEotfM0E'
+reviews:
+  - { text: 'Konečne obočie, ktoré vyzerá úplne prirodzene. Ráno ušetrím kopu času.', author: 'Martina K.' }
+  - { text: 'Profesionálka telom aj dušou. Výsledok predčil moje očakávania.', author: 'Lucia B.' }
 intro_kicker: 'Salón krásy · Nitra · od 2005'
 intro_title: 'Vitajte v'
 intro_title_em: 'mojom salóne'
