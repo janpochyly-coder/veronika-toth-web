@@ -65,3 +65,57 @@ form:
               fields:
                 .media: { type: pagemediaselect, label: 'Fotka / video' }
                 .label: { type: text, label: 'Popis (nepovinné)' }
+        tab_sluzby:
+          type: tab
+          title: Služby
+          fields:
+            header.overview:
+              type: list
+              label: 'Prehľad na úvodnej stránke (karty)'
+              collapsed: true
+              fields:
+                .title: { type: text, label: 'Názov' }
+                .desc: { type: textarea, label: 'Popis', rows: 2 }
+                .target: { type: select, label: 'Odkaz na', default: sluzby, options: { sluzby: 'Služby', kontakt: 'Kontakt', cennik: 'Cenník', galeria: 'Galéria' } }
+                .tag: { type: text, label: 'Text odkazu (napr. Zobraziť →)' }
+            header.services:
+              type: list
+              label: 'Detail služieb (karty)'
+              collapsed: true
+              fields:
+                .icon: { type: select, label: 'Ikona', options: { brow: 'Obočie', lips: 'Pery', laser: 'Laser', nail: 'Manikúra', foot: 'Pedikúra' } }
+                .title: { type: text, label: 'Názov' }
+                .tag: { type: text, label: 'Štítok' }
+                .short: { type: textarea, label: 'Krátky popis', rows: 3 }
+                .long: { type: textarea, label: 'Text po rozkliknutí (Prečítať viac) — podporuje **tučné**', rows: 8 }
+        tab_faq:
+          type: tab
+          title: FAQ
+          fields:
+            header.faq:
+              type: list
+              label: 'Časté otázky'
+              collapsed: true
+              fields:
+                .q: { type: text, label: 'Otázka' }
+                .a: { type: textarea, label: 'Odpoveď', rows: 3 }
+        tab_starostlivost:
+          type: tab
+          title: 'Starostlivosť a Kurzy'
+          fields:
+            header.care_title: { type: text, label: 'Nadpis – starostlivosť' }
+            header.care:
+              type: list
+              label: 'Kroky starostlivosti'
+              fields:
+                .title: { type: text, label: 'Názov kroku' }
+                .text: { type: textarea, label: 'Text', rows: 2 }
+            header.care_note: { type: textarea, label: 'Poznámka pod krokmi', rows: 2 }
+            header.kurzy_title: { type: text, label: 'Kurzy – nadpis' }
+            header.kurzy_lead: { type: textarea, label: 'Kurzy – úvodný text', rows: 3 }
+            header.kurzy_note: { type: textarea, label: 'Kurzy – poznámka', rows: 2 }
+        tab_pravne:
+          type: tab
+          title: 'GDPR'
+          fields:
+            header.gdpr: { type: textarea, label: 'Ochrana osobných údajov (podporuje ### nadpisy a **tučné**)', rows: 20 }

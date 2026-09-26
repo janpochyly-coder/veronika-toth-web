@@ -69,10 +69,9 @@
       <div class="wrap">
         <div class="head"><span class="kicker">Čo ponúkam</span><h2>Služby nášho salónu</h2><p>Od permanentného make-upu cez nechty až po pleťovú starostlivosť — všetko na jednom mieste.</p></div>
         <div class="svc-list">
-          <div class="svc" data-go="sluzby" style="cursor:pointer"><span class="no">01</span><div><h3>Permanentný make-up</h3><p>Obočie technikou PhiBrows či Powder Brows a pery metódou Classy Lips.</p></div><span class="tag">Zobraziť →</span></div>
-          <div class="svc" data-go="sluzby" style="cursor:pointer"><span class="no">02</span><div><h3>Manikúra &amp; pedikúra</h3><p>Modelácia gélových nechtov, gél lak, klasická manikúra aj pedikúra.</p></div><span class="tag">Zobraziť →</span></div>
-          <div class="svc" data-go="sluzby" style="cursor:pointer"><span class="no">03</span><div><h3>Laserové ošetrenia</h3><p>Odstránenie nevyhovujúceho PMU a tetovaní a osviežujúci Carbon peel.</p></div><span class="tag">Zobraziť →</span></div>
-          <div class="svc" data-go="kontakt" style="cursor:pointer"><span class="no">04</span><div><h3>Darčekové poukazy</h3><p>Potešte blízkych poukazom na permanentný make-up či starostlivosť o nechty.</p></div><span class="tag">Napíšte →</span></div>
+        {% for o in page.header.overview %}
+          <div class="svc" data-go="{{ o.target|default('sluzby') }}" style="cursor:pointer"><span class="no">{{ '%02d'|format(loop.index) }}</span><div><h3>{{ o.title }}</h3><p>{{ o.desc }}</p></div><span class="tag">{{ o.tag|default('Zobraziť →') }}</span></div>
+        {% endfor %}
         </div>
         <div style="text-align:center;margin-top:36px"><a class="btn" data-go="sluzby" href="#sluzby">Všetky služby</a></div>
       </div>
@@ -98,60 +97,21 @@
       <div class="wrap">
         <div class="head"><span class="kicker">Služby</span><h2>Zákroky na mieru</h2><p>Každej klientke navrhujem riešenie na mieru. Kliknutím na „Prečítať viac" zobrazíte podrobný popis; ceny nájdete v cenníku.</p></div>
         <div class="vgrid">
+        {% set svcicons = {
+          'brow': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 15c4-6 14-6 18-1"/><path d="M6.5 13l-1-2"/><path d="M10.5 11.6l-.6-2.2"/><path d="M14 11.2l.5-2.2"/><path d="M17.6 12.2l1.2-1.9"/></svg>',
+          'lips': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3 11c3-3 6-3 9 0 3-3 6-3 9 0-2 3.6-6 5-9 5s-7-1.4-9-5z"/><path d="M3 11h18"/></svg>',
+          'laser': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z"/></svg>',
+          'nail': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M10 3h4v2.5h-4z"/><path d="M9.5 8.5c0-1.6 1-3 2.5-3s2.5 1.4 2.5 3v8.5a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M9.5 12h5"/></svg>',
+          'foot': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M9 4C6.5 4 5 6.5 5 10c0 2.5 1 4 1 6.5 0 2 1.5 3.2 3.5 3.2s3-1.6 3-3.6c0-2 .6-3 .6-5.1"/><circle cx="15.5" cy="6" r="1"/><circle cx="17.6" cy="8.6" r="1"/><circle cx="18.2" cy="11.6" r="1"/></svg>'
+        } %}
+        {% for s in page.header.services %}
           <div class="vcard">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 15c4-6 14-6 18-1"/><path d="M6.5 13l-1-2"/><path d="M10.5 11.6l-.6-2.2"/><path d="M14 11.2l.5-2.2"/><path d="M17.6 12.2l1.2-1.9"/></svg></div>
-            <h3>Obočie</h3><span class="tag">PMU · obočie</span>
-            <p class="lead2">Permanentný make-up obočia, ktorý vyzerá úplne prirodzene — podľa vášho typu volíme jemné chĺpky alebo púdrový tieň.</p>
-            <details class="more"><summary>Prečítať viac</summary><div class="more-body">
-              <p>Pred zákrokom si vždy spoločne navrhneme tvar a odtieň na mieru vašej tváre a typu pleti. Pracujem s certifikovanými pigmentmi a sterilnými jednorazovými nástrojmi.</p>
-              <p><strong>Powder Brows</strong> — púdrová technika s jemným, rovnomerným tieňom; ideálna pre mastnejšiu pleť a upravený, no jemný výsledok.</p>
-              <p><strong>Hair Stroke</strong> — realistické jednotlivé chĺpky strojčekom, verne kopírujúce prirodzený rast obočia.</p>
-              <p><strong>Microblading</strong> — manuálne kreslené chĺpky; vhodné najmä pre normálnu až suchšiu pleť.</p>
-              <p><strong>Combi Brows</strong> — kombinácia chĺpkov a púdrového tieňa pre plný, no prirodzený výsledok.</p>
-              <p><strong>Korekcia</strong> — kontrolné doladenie po prvom sedení a neskoršie oživenie pigmentu.</p>
-            </div></details>
+            <div class="ic">{{ svcicons[s.icon]|default(svcicons['brow'])|raw }}</div>
+            <h3>{{ s.title }}</h3><span class="tag">{{ s.tag }}</span>
+            <p class="lead2">{{ s.short }}</p>
+            {% if s.long %}<details class="more"><summary>Prečítať viac</summary><div class="more-body">{{ s.long|markdown }}</div></details>{% endif %}
           </div>
-          <div class="vcard">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3 11c3-3 6-3 9 0 3-3 6-3 9 0-2 3.6-6 5-9 5s-7-1.4-9-5z"/><path d="M3 11h18"/></svg></div>
-            <h3>Pery</h3><span class="tag">PMU · pery</span>
-            <p class="lead2">Prirodzené dotvorenie tvaru a farby pier metódou Classy Lips.</p>
-            <details class="more"><summary>Prečítať viac</summary><div class="more-body">
-              <p><strong>Classy Lips</strong> jemne dotvorí kontúru, zjednotí nerovnomernú farbu a perám vráti sviežosť a mladistvý vzhľad.</p>
-              <p>Odtieň volíme tak, aby ladil s vašou prirodzenou farbou — výsledok pôsobí zdravo a plnšie, nikdy nie „namaľovane".</p>
-              <p>Pery prechádzajú niekoľkodňovým hojením; finálny odtieň sa ustáli po pár týždňoch. Súčasťou je konzultácia a prípadná korekcia.</p>
-            </div></details>
-          </div>
-          <div class="vcard">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z"/></svg></div>
-            <h3>Laserové ošetrenia</h3><span class="tag">Laser</span>
-            <p class="lead2">Šetrné laserové odstránenie nevyhovujúceho PMU a menších tetovaní, plus osviežujúci Carbon peel.</p>
-            <details class="more"><summary>Prečítať viac</summary><div class="more-body">
-              <p><strong>Odstránenie PMU</strong> — laserom postupne rozrušujeme a odstraňujeme starý pigment, vo viacerých sedeniach s odstupom.</p>
-              <p><strong>Odstránenie menších tetovaní</strong> — počet sedení aj cena závisia od veľkosti, farby a hĺbky; zhodnotíme pri konzultácii.</p>
-              <p><strong>Carbon peel</strong> — uhlíková maska a laser vyhladia a rozjasnia pleť, zjednotia tón a zmenšia rozšírené póry.</p>
-            </div></details>
-          </div>
-          <div class="vcard">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M10 3h4v2.5h-4z"/><path d="M9.5 8.5c0-1.6 1-3 2.5-3s2.5 1.4 2.5 3v8.5a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M9.5 12h5"/></svg></div>
-            <h3>Manikúra</h3><span class="tag">Nechty</span>
-            <p class="lead2">Precízna starostlivosť o ruky a nechty — od klasickej manikúry po modeláciu gélom.</p>
-            <details class="more"><summary>Prečítať viac</summary><div class="more-body">
-              <p><strong>Modelácia gélových nechtov</strong> — pevné, prirodzene vyzerajúce nechty vrátane úpravy tvaru a dĺžky.</p>
-              <p><strong>Gél lak s kaučukovou bázou</strong> — trvácny lak so spevňujúcou bázou, ktorá chráni váš vlastný necht.</p>
-              <p><strong>Klasická a pánska manikúra</strong> — úprava tvaru, ošetrenie nechtovej kožičky a starostlivosť o ruky.</p>
-              <p>K dispozícii je aj <strong>zdobenie</strong>, <strong>oprava</strong> nechtov a šetrné <strong>odstránenie</strong> starého gélu.</p>
-            </div></details>
-          </div>
-          <div class="vcard">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M9 4C6.5 4 5 6.5 5 10c0 2.5 1 4 1 6.5 0 2 1.5 3.2 3.5 3.2s3-1.6 3-3.6c0-2 .6-3 .6-5.1"/><circle cx="15.5" cy="6" r="1"/><circle cx="17.6" cy="8.6" r="1"/><circle cx="18.2" cy="11.6" r="1"/></svg></div>
-            <h3>Pedikúra</h3><span class="tag">Nechty</span>
-            <p class="lead2">Starostlivosť o nohy v príjemnom prostredí — mokrá aj suchá pedikúra a modelácia.</p>
-            <details class="more"><summary>Prečítať viac</summary><div class="more-body">
-              <p><strong>Mokrá pedikúra</strong> — klasická pedikúra s kúpeľom; zmäkčí pokožku, upraví nechty a odstráni zrohovatenú kožu.</p>
-              <p><strong>Suchá (prístrojová) pedikúra</strong> — ošetrenie bez namáčania, precízne a šetrné, vhodné aj pre citlivejšie nohy.</p>
-              <p><strong>Modelácia nechtov na nohách</strong> — spevnenie a úprava gélom pre dlhotrvajúci upravený vzhľad.</p>
-            </div></details>
-          </div>
+        {% endfor %}
         </div>
 
         <div style="text-align:center;margin-top:clamp(40px,6vw,64px);display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
@@ -165,22 +125,19 @@
       <div class="wrap">
         <div class="head"><span class="kicker">Časté otázky</span><h2>Čo vás najčastejšie zaujíma</h2></div>
         <div class="faq">
-          <details class="q" open><summary>Bolí zákrok?</summary><p>Pred aj počas zákroku používam znecitlivenie, takže väčšina klientok cíti len mierny tlak. Vnímanie je individuálne, ale zákrok je celkovo dobre znesiteľný.</p></details>
-          <details class="q"><summary>Ako dlho permanentný make-up vydrží?</summary><p>Spravidla 12 – 18 mesiacov v závislosti od typu pleti, životného štýlu a starostlivosti. Následne sa odporúča obnova, ktorá udrží výsledok svieži.</p></details>
-          <details class="q"><summary>Ako prebieha prvé sedenie?</summary><p>Začíname konzultáciou a spoločným návrhom tvaru a odtieňa. Nasleduje samotný zákrok a po približne 4 – 8 týždňoch kontrolné sedenie, kde výsledok doladíme.</p></details>
-          <details class="q"><summary>Pre koho nie je zákrok vhodný?</summary><p>Počas tehotenstva a dojčenia, pri niektorých ochoreniach či užívaní určitých liekov zákrok neodporúčam. V prípade pochybností sa vopred poraďte so mnou alebo lekárom.</p></details>
-          <details class="q"><summary>Ako sa objednám?</summary><p>Najjednoduchšie online cez rezervačný systém, prípadne telefonicky. Termín si vyberiete podľa aktuálnej dostupnosti.</p></details>
+        {% for f in page.header.faq %}
+          <details class="q"{% if loop.first %} open{% endif %}><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+        {% endfor %}
         </div>
 
         <div class="care">
-          <h3>Starostlivosť po zákroku</h3>
+          <h3>{{ page.header.care_title|default('Starostlivosť po zákroku') }}</h3>
           <div class="care-list">
-            <div class="care-step"><span class="cn">1</span><p><strong>Udržujte čistotu a sucho</strong>Prvé dni sa ošetrenej oblasti nedotýkajte a udržujte ju čistú a suchú.</p></div>
-            <div class="care-step"><span class="cn">2</span><p><strong>Aplikujte odporúčaný krém</strong>Podľa pokynov nanášajte tenkú vrstvu odporúčaného prípravku.</p></div>
-            <div class="care-step"><span class="cn">3</span><p><strong>Chráňte pred slnkom a vodou</strong>Vyhnite sa saune, bazénu, soláriu a priamemu slnku približne dva týždne.</p></div>
-            <div class="care-step"><span class="cn">4</span><p><strong>Neodlupujte kožu</strong>Odlupujúcu sa kožu nechajte odpadnúť samú — inak hrozí nerovnomerný výsledok.</p></div>
+          {% for c in page.header.care %}
+            <div class="care-step"><span class="cn">{{ loop.index }}</span><p><strong>{{ c.title }}</strong>{{ c.text }}</p></div>
+          {% endfor %}
           </div>
-          <p class="pnote" style="text-align:center">Kompletné písomné pokyny dostanete od nás po zákroku. Plný výsledok sa ustáli po 4 – 6 týždňoch.</p>
+          <p class="pnote" style="text-align:center">{{ page.header.care_note }}</p>
         </div>
       </div>
     </section>
@@ -190,8 +147,8 @@
   <div class="view" id="kurzy">
     <section>
       <div class="wrap">
-        <div class="head"><span class="kicker">Vzdelávanie</span><h2>Kurzy — pripravujeme</h2><p>Kurzy permanentného make-upu pre začiatočníčky aj pokročilé práve pripravujem. Zanechajte mi kontakt a ozvem sa vám hneď, ako otvorím prihlasovanie.</p></div>
-        <p class="pnote" style="text-align:center;max-width:600px;margin:0 auto 28px">Čo vás čaká: teória, hygiena a bezpečnosť · praktický nácvik na modeloch · podpora aj po kurze.</p>
+        <div class="head"><span class="kicker">Vzdelávanie</span><h2>{{ page.header.kurzy_title|default('Kurzy — pripravujeme') }}</h2><p>{{ page.header.kurzy_lead }}</p></div>
+        <p class="pnote" style="text-align:center;max-width:600px;margin:0 auto 28px">{{ page.header.kurzy_note }}</p>
         <div style="text-align:center"><a class="btn gold" data-go="kontakt" href="#kontakt">Mám záujem o kurz</a></div>
       </div>
     </section>
@@ -274,37 +231,7 @@
       <div class="wrap">
         <div class="head"><span class="kicker">Právne</span><h2>Ochrana osobných údajov</h2></div>
         <div class="legal">
-          <div class="note">Poznámka pre klientku: doplňte údaje prevádzkovateľa (obchodné meno, sídlo, IČO) — sú označené [...].</div>
-
-          <h3>Prevádzkovateľ</h3>
-          <p>[Obchodné meno], [sídlo / adresa prevádzky], IČO: [IČO]. Kontakt: <a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a>, +421 903 810 610.</p>
-
-          <h3>Aké údaje spracúvame</h3>
-          <p>Spracúvame údaje, ktoré nám poskytnete pri objednaní termínu alebo v kontaktnom formulári — meno, telefónne číslo, e-mail a obsah vašej správy. V súvislosti so zákrokmi môžeme viesť aj nevyhnutné údaje o poskytnutej službe.</p>
-
-          <h3>Účel a právny základ</h3>
-          <ul>
-            <li>vybavenie objednávky a komunikácia s vami (plnenie zmluvy, resp. opatrenia pred jej uzavretím),</li>
-            <li>odpoveď na dopyt z kontaktného formulára (oprávnený záujem),</li>
-            <li>plnenie zákonných povinností (napr. účtovníctvo).</li>
-          </ul>
-
-          <h3>Doba uchovávania</h3>
-          <p>Osobné údaje uchovávame len po dobu nevyhnutnú na daný účel, prípadne po dobu stanovenú príslušnými právnymi predpismi.</p>
-
-          <h3>Príjemcovia a tretie strany</h3>
-          <p>Na prevádzku webu a poskytovanie služieb využívame: rezervačný systém <strong>booqme</strong> (spracovanie objednávok), <strong>Google Maps</strong> (zobrazenie mapy), poskytovateľa <strong>hostingu a e-mailu</strong>. Tieto subjekty spracúvajú údaje ako sprostredkovatelia v nevyhnutnom rozsahu.</p>
-
-          <h3>Cookies</h3>
-          <p>Web používa nevyhnutné cookies potrebné pre svoje fungovanie. Obsah tretích strán (Google Mapy, prípadne Google recenzie) sa načíta až po vašom súhlase v cookie lište. Svoje rozhodnutie môžete kedykoľvek zmeniť vymazaním údajov prehliadača pre túto stránku.</p>
-
-          <h3>Vaše práva</h3>
-          <p>Máte právo na prístup k svojim údajom, ich opravu, výmaz, obmedzenie spracúvania, prenosnosť a právo namietať proti spracúvaniu. Máte tiež právo podať sťažnosť na <strong>Úrad na ochranu osobných údajov Slovenskej republiky</strong>.</p>
-
-          <h3>Kontakt</h3>
-          <p>V otázkach ochrany osobných údajov nás kontaktujte na <a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a>.</p>
-
-          <p class="pnote">Tento dokument je informatívny vzor. Pred spustením webu odporúčame jeho znenie prispôsobiť reálnemu rozsahu spracúvania údajov.</p>
+          {{ page.header.gdpr|markdown }}
         </div>
         <div style="text-align:center;margin-top:36px"><a class="btn" data-go="uvod" href="#uvod">Späť na úvod</a></div>
       </div>
