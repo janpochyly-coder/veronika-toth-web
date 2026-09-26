@@ -1,0 +1,67 @@
+title: Domovská stránka
+'@extends':
+  type: default
+  context: blueprints://pages
+form:
+  fields:
+    tabs:
+      type: tabs
+      fields:
+        tab_uvod:
+          type: tab
+          title: Úvod
+          fields:
+            header.intro_kicker: { type: text, label: 'Malý nadpis' }
+            header.intro_title: { type: text, label: 'Nadpis' }
+            header.intro_title_em: { type: text, label: 'Nadpis – zvýraznená časť' }
+            header.intro_quote: { type: textarea, label: 'Citát', rows: 2 }
+            header.intro_p1: { type: textarea, label: 'Odsek 1', rows: 4 }
+            header.intro_p2: { type: textarea, label: 'Odsek 2', rows: 3 }
+            header.intro_sign: { type: text, label: 'Podpis' }
+            header.intro_photo: { type: file, label: 'Profilová fotka', destination: 'self@', accept: ['image/*'] }
+        tab_kontakt:
+          type: tab
+          title: Kontakt
+          fields:
+            header.c_addr: { type: text, label: 'Adresa' }
+            header.c_addr_note: { type: text, label: 'Adresa – poznámka' }
+            header.c_phone: { type: text, label: 'Telefón' }
+            header.c_email: { type: text, label: 'E-mail' }
+            header.c_ig: { type: text, label: 'Instagram (@meno)' }
+            header.c_hours: { type: text, label: 'Objednávky / hodiny' }
+            header.c_hours_note: { type: text, label: 'Hodiny – poznámka' }
+            header.c_booking: { type: text, label: 'Odkaz na online rezerváciu' }
+        tab_cennik:
+          type: tab
+          title: Cenník
+          fields:
+            header.cennik:
+              type: list
+              label: 'Cenník – skupiny'
+              collapsed: true
+              fields:
+                .title: { type: text, label: 'Názov skupiny' }
+                .items:
+                  type: list
+                  label: 'Položky'
+                  fields:
+                    .name: { type: text, label: 'Názov' }
+                    .desc: { type: text, label: 'Popis (nepovinné)' }
+                    .price: { type: text, label: 'Cena' }
+
+        tab_galeria:
+          type: tab
+          title: Galéria
+          fields:
+            header.gallery_pmu:
+              type: list
+              label: 'Galéria — Permanentný make-up'
+              fields:
+                .media: { type: pagemediaselect, label: 'Fotka / video' }
+                .label: { type: text, label: 'Popis (nepovinné)' }
+            header.gallery_nechty:
+              type: list
+              label: 'Galéria — Nechty'
+              fields:
+                .media: { type: pagemediaselect, label: 'Fotka / video' }
+                .label: { type: text, label: 'Popis (nepovinné)' }

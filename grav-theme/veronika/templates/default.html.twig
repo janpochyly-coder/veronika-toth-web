@@ -38,16 +38,16 @@
     <section class="intro">
       <img class="intro-logo" src="{{ theme_url }}/images/logo-full.png" alt="" aria-hidden="true">
       <div class="wrap intro-grid">
-        <div class="intro-photo frame"><div class="ph tall"><img src="{{ theme_url }}/images/veronika.jpg" alt="Veronika Tóth — salón krásy Nitra"></div></div>
+        <div class="intro-photo frame"><div class="ph tall"><img src="{% set ip = page.media[page.header.intro_photo] %}{{ ip ? ip.url : theme_url ~ '/images/veronika.jpg' }}" alt="Veronika Tóth — salón krásy Nitra"></div></div>
         <div class="intro-txt">
-          <span class="kicker">Salón krásy · Nitra · od 2005</span>
-          <h1>Vitajte v <em>mojom salóne</em></h1>
-          <p class="quote">„Najkrajší výsledok je ten, ktorý vyzerá tak, akoby ste sa s ním narodili."</p>
-          <p>Moje meno je <strong>Veronika Tóth</strong> a kráse sa venujem už od roku 2005. Vo svojom salóne v Nitre nájdete permanentný make-up obočia a pier, starostlivosť o nechty aj laserové a pleťové ošetrenia — všetko s dôrazom na jemný, prirodzený a dlhodobo krásny výsledok.</p>
-          <p>Obočie tvorím okrem iného technikou <strong>PhiBrows</strong> a pracujem výhradne s certifikovanými pigmentmi a sterilnými jednorazovými nástrojmi.</p>
-          <div class="sig">Veronika Tóth</div>
+          <span class="kicker">{{ page.header.intro_kicker }}</span>
+          <h1>{{ page.header.intro_title }} <em>{{ page.header.intro_title_em }}</em></h1>
+          <p class="quote">{{ page.header.intro_quote }}</p>
+          <p>{{ page.header.intro_p1 }}</p>
+          <p>{{ page.header.intro_p2 }}</p>
+          <div class="sig">{{ page.header.intro_sign }}</div>
           <div class="intro-actions">
-            <a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a>
+            <a class="btn gold" href="{{ page.header.c_booking }}" target="_blank" rel="noopener">Objednať sa online</a>
             <a class="btn" data-go="sluzby" href="#sluzby">Služby</a>
           </div>
         </div>
@@ -155,7 +155,7 @@
         </div>
 
         <div style="text-align:center;margin-top:clamp(40px,6vw,64px);display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-          <a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a>
+          <a class="btn gold" href="{{ page.header.c_booking }}" target="_blank" rel="noopener">Objednať sa online</a>
           <a class="btn" data-go="cennik" href="#cennik">Pozrieť cenník</a>
         </div>
       </div>
@@ -203,48 +203,17 @@
       <div class="wrap">
         <div class="head"><span class="kicker">Cenník</span><h2>Prehľadné ceny</h2></div>
         <div class="price">
+{% for g in page.header.cennik %}
           <div class="price-group">
-            <h3>Permanentný make-up</h3>
-            <div class="prow"><div class="l">Powder Brows<small>Púdrové obočie — strojčeková technika</small></div><div class="r">200 €</div></div>
-            <div class="prow"><div class="l">Hair Stroke<small>Realistické chĺpky — strojčeková technika</small></div><div class="r">200 €</div></div>
-            <div class="prow"><div class="l">Combi Brows<small>Spojenie techník powder + hair stroke</small></div><div class="r">230 €</div></div>
-            <div class="prow"><div class="l">Microblading<small>Manuálne tetovanie chĺpkov</small></div><div class="r">200 €</div></div>
-            <div class="prow"><div class="l">Classy Lips<small>Permanentný make-up pier</small></div><div class="r">200 €</div></div>
-            <div class="prow"><div class="l">Cartridge<small>Jednorazová ihla</small></div><div class="r">30 €</div></div>
-            <div class="prow"><div class="l">Korekcia do 3 mesiacov<small>Od 1. sedenia</small></div><div class="r">30 €</div></div>
-            <div class="prow"><div class="l">Korekcia do 6 mesiacov<small>Od 1. sedenia</small></div><div class="r">60 €</div></div>
-            <div class="prow"><div class="l">Korekcia do 1 roka<small>Oživenie pigmentu</small></div><div class="r">100 €</div></div>
+            <h3>{{ g.title }}</h3>
+            {% for it in g.items %}
+            <div class="prow"><div class="l">{{ it.name }}{% if it.desc %}<small>{{ it.desc }}</small>{% endif %}</div><div class="r">{{ it.price }}</div></div>
+            {% endfor %}
           </div>
-          <div class="price-group">
-            <h3>Laser</h3>
-            <div class="prow"><div class="l">Odstránenie permanentného make-upu</div><div class="r">45 €</div></div>
-            <div class="prow"><div class="l">Odstránenie tetovania<small>Podľa rozsahu tetovania</small></div><div class="r">50 – 200 €</div></div>
-            <div class="prow"><div class="l">Carbon peel<small>Ošetrenie tváre — maska + laser</small></div><div class="r">45 €</div></div>
-          </div>
-          <div class="price-group">
-            <h3>Manikúra</h3>
-            <div class="prow"><div class="l">Modelácia gélových nechtov</div><div class="r">50 €</div></div>
-            <div class="prow"><div class="l">Gél lak modelácia / kaučuková báza</div><div class="r">35 €</div></div>
-            <div class="prow"><div class="l">Klasická / pánska manikúra</div><div class="r">25 €</div></div>
-            <div class="prow"><div class="l">Zdobenie / každá ďalšia začatá hodina</div><div class="r">25 €</div></div>
-            <div class="prow"><div class="l">Oprava 1 nechtu</div><div class="r">35 €</div></div>
-            <div class="prow"><div class="l">Oprava 1 nechtu pri dopĺňaní</div><div class="r">3,50 €</div></div>
-            <div class="prow"><div class="l">Odstránenie gélových nechtov</div><div class="r">20 €</div></div>
-            <div class="prow"><div class="l">Odstránenie gélových nechtov — iný salón</div><div class="r">30 €</div></div>
-          </div>
-          <div class="price-group">
-            <h3>Pedikúra</h3>
-            <div class="prow"><div class="l">Mokrá pedikúra</div><div class="r">20 €</div></div>
-            <div class="prow"><div class="l">Suchá pedikúra</div><div class="r">20 €</div></div>
-            <div class="prow"><div class="l">Modelácia gélových nechtov<small>Nohy</small></div><div class="r">30 €</div></div>
-          </div>
-          <div class="price-group">
-            <h3>Vzdelávanie</h3>
-            <div class="prow"><div class="l">Kurz permanentného make-upu<small>Pripravujeme — termíny čoskoro</small></div><div class="r">pripravujeme</div></div>
-          </div>
+{% endfor %}
         </div>
         <p class="pnote">Ceny sú orientačné, finálnu cenu potvrdíme pri konzultácii. Rezervovať termín môžete online alebo telefonicky.</p>
-        <div style="text-align:center;margin-top:24px"><a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a></div>
+        <div style="text-align:center;margin-top:24px"><a class="btn gold" href="{{ page.header.c_booking }}" target="_blank" rel="noopener">Objednať sa online</a></div>
       </div>
     </section>
   </div>
@@ -256,22 +225,14 @@
         <div class="head"><span class="kicker">Fotogaléria</span><h2>Výsledky</h2></div>
         <h3 class="gal-sub">Permanentný make-up</h3>
         <div class="gal">
-          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/g1.webp" alt="PhiBrows — detail chĺpkov"><span class="lab">Obočie · PhiBrows</span></div></div>
-          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/obocie1.jpg" alt="Obočie — výsledok"><span class="lab">Obočie</span></div></div>
-          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/obocie2.jpg" alt="Obočie — výsledok"><span class="lab">Obočie</span></div></div>
-          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/g4.jpg" alt="Výsledok — obočie"><span class="lab">Výsledok</span></div></div>
-          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/g5.jpg" alt="Výsledok — obočie"><span class="lab">Výsledok</span></div></div>
-          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/g2.jpg" alt="Výsledok — pery a tvár"><span class="lab">Pery</span></div></div>
-        </div>
+        {% for it in page.header.gallery_pmu %}{% set m = page.media[it.media] %}
+          <div class="frame"><div class="ph square">{% if it.media ends with '.mp4' or it.media ends with '.mov' %}<video src="{{ m ? m.url : '' }}" autoplay muted loop playsinline></video>{% else %}<img src="{{ m ? m.url : '' }}" alt="{{ it.label }}">{% endif %}{% if it.label %}<span class="lab">{{ it.label }}</span>{% endif %}</div></div>
+        {% endfor %}</div>
         <h3 class="gal-sub">Nechty</h3>
         <div class="gal">
-          <div class="frame"><div class="ph square"><video src="{{ theme_url }}/images/nechty-vid1.mp4" autoplay muted loop playsinline></video><span class="lab">Video</span></div></div>
-          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/nechty1.jpg" alt="Nechty — modelácia"><span class="lab">Nechty</span></div></div>
-          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/nechty2.jpg" alt="Nechty — modelácia"><span class="lab">Nechty</span></div></div>
-          <div class="frame"><div class="ph square"><video src="{{ theme_url }}/images/nechty-vid2.mp4" autoplay muted loop playsinline></video><span class="lab">Video</span></div></div>
-          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/nechty3.jpg" alt="Nechty — modelácia"><span class="lab">Nechty</span></div></div>
-          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/nechty4.jpg" alt="Nechty — modelácia"><span class="lab">Nechty</span></div></div>
-        </div>
+        {% for it in page.header.gallery_nechty %}{% set m = page.media[it.media] %}
+          <div class="frame"><div class="ph square">{% if it.media ends with '.mp4' or it.media ends with '.mov' %}<video src="{{ m ? m.url : '' }}" autoplay muted loop playsinline></video>{% else %}<img src="{{ m ? m.url : '' }}" alt="{{ it.label }}">{% endif %}{% if it.label %}<span class="lab">{{ it.label }}</span>{% endif %}</div></div>
+        {% endfor %}</div>
         <p class="pnote">Aktuálne práce nájdete na Instagrame <a href="https://www.instagram.com/veronikatoth_phibrows/" target="_blank" rel="noopener"><strong>@veronikatoth_phibrows</strong></a>.</p>
       </div>
     </section>
@@ -284,13 +245,13 @@
         <div class="head"><span class="kicker">Kontakt</span><h2>Objednajte sa</h2></div>
         <div class="contact">
           <div class="cinfo">
-            <div class="r"><div class="k">Adresa</div><div class="v">Pražská 11, Nitra<small>Slovensko</small></div></div>
-            <div class="r"><div class="k">Telefón</div><div class="v"><a href="tel:+421903810610">+421 903 810 610</a></div></div>
-            <div class="r"><div class="k">E-mail</div><div class="v"><a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a></div></div>
-            <div class="r"><div class="k">Instagram</div><div class="v"><a href="https://www.instagram.com/veronikatoth_phibrows/" target="_blank" rel="noopener">@veronikatoth_phibrows</a></div></div>
-            <div class="r"><div class="k">Objednávky</div><div class="v">Len na objednávku<small>Každý deň · termín zrušte min. 24 h vopred</small></div></div>
+            <div class="r"><div class="k">Adresa</div><div class="v">{{ page.header.c_addr }}<small>{{ page.header.c_addr_note }}</small></div></div>
+            <div class="r"><div class="k">Telefón</div><div class="v"><a href="tel:{{ page.header.c_phone|replace({' ':''}) }}">{{ page.header.c_phone }}</a></div></div>
+            <div class="r"><div class="k">E-mail</div><div class="v"><a href="mailto:{{ page.header.c_email }}">{{ page.header.c_email }}</a></div></div>
+            <div class="r"><div class="k">Instagram</div><div class="v"><a href="https://www.instagram.com/{{ page.header.c_ig|replace({'@':''}) }}/" target="_blank" rel="noopener">{{ page.header.c_ig }}</a></div></div>
+            <div class="r"><div class="k">Objednávky</div><div class="v">{{ page.header.c_hours }}<small>{{ page.header.c_hours_note }}</small></div></div>
             <div class="r"><div class="k">Storno</div><div class="v">Termín zrušte prosím min. 24 h vopred<small>Pri neskoršom zrušení môže byť účtovaný poplatok</small></div></div>
-            <div class="book"><a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a></div>
+            <div class="book"><a class="btn gold" href="{{ page.header.c_booking }}" target="_blank" rel="noopener">Objednať sa online</a></div>
           </div>
           <form class="cform">
             <div><label for="c-name">Meno</label><input id="c-name" name="name" type="text" required></div>
