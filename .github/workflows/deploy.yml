@@ -1,0 +1,38 @@
+name: Deploy témy na Websupport (SFTP)
+
+# Nahráva LEN kód témy (grav-theme/veronika) na hosting.
+# Obsah stránok (user/pages) a nahraté obrázky ostávajú na serveri –
+# to, čo klientka upraví cez /admin, sa NIKDY neprepíše.
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'grav-theme/veronika/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch: {}   # umožní spustiť deploy aj ručne z GitHubu
+
+concurrency:
+  group: deploy-websupport
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Nahrať tému cez SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT || 22 }}
+          # čo nahrať (lokálne v repe) a kam (na serveri):
+          local_path: './grav-theme/veronika/*'
+          remote_path: ${{ secrets.SFTP_THEME_PATH }}
+          sftp_only: true
+          # nemazať súbory na serveri, ktoré nie sú v repe (bezpečnejšie)
+          delete_remote_files: false
