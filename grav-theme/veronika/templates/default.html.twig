@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="sk">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Veronika Tóth — salón krásy Nitra</title>
+<meta name="description" content="Salón krásy v Nitre — permanentný make-up, manikúra, pedikúra, laserové a pleťové ošetrenia. Od roku 2005. Online rezervácia.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317130D'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='15' fill='%23C7A567' text-anchor='middle'%3EVT%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Veronika Tóth — salón krásy Nitra">
+<meta property="og:description" content="Salón krásy v Nitre — permanentný make-up, nechty, laserové a pleťové ošetrenia. Od roku 2005.">
+<meta property="og:image" content="https://janpochyly-coder.github.io/veronika-toth-web/navrh-2/images/hero.jpg">
+<meta property="og:url" content="https://janpochyly-coder.github.io/veronika-toth-web/navrh-2/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@300;400;500;600&display=swap">
+
+<link rel="stylesheet" href="{{ theme_url }}/css/style.css">
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand" data-go="uvod"><img class="logo-mark" src="{{ theme_url }}/images/logo-mark.png" alt="Veronika Tóth"><span class="brand-txt"><span class="bn">Veronika Tóth</span><span class="bs">Salón krásy · Nitra</span></span></div>
+    <button class="menu-toggle" id="menuBtn" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <nav class="links" id="navlinks">
+      <button data-go="uvod" class="active">Úvod</button>
+      <button data-go="sluzby">Služby</button>
+      <button data-go="kurzy">Kurzy</button>
+      <button data-go="cennik">Cenník</button>
+      <button data-go="galeria">Galéria</button>
+      <button data-go="kontakt">Kontakt</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- UVOD -->
+  <div class="view active" id="uvod">
+    <section class="intro">
+      <img class="intro-logo" src="{{ theme_url }}/images/logo-full.png" alt="" aria-hidden="true">
+      <div class="wrap intro-grid">
+        <div class="intro-photo frame"><div class="ph tall"><img src="{{ theme_url }}/images/veronika.jpg" alt="Veronika Tóth — salón krásy Nitra"></div></div>
+        <div class="intro-txt">
+          <span class="kicker">Salón krásy · Nitra · od 2005</span>
+          <h1>Vitajte v <em>mojom salóne</em></h1>
+          <p class="quote">„Najkrajší výsledok je ten, ktorý vyzerá tak, akoby ste sa s ním narodili."</p>
+          <p>Moje meno je <strong>Veronika Tóth</strong> a kráse sa venujem už od roku 2005. Vo svojom salóne v Nitre nájdete permanentný make-up obočia a pier, starostlivosť o nechty aj laserové a pleťové ošetrenia — všetko s dôrazom na jemný, prirodzený a dlhodobo krásny výsledok.</p>
+          <p>Obočie tvorím okrem iného technikou <strong>PhiBrows</strong> a pracujem výhradne s certifikovanými pigmentmi a sterilnými jednorazovými nástrojmi.</p>
+          <div class="sig">Veronika Tóth</div>
+          <div class="intro-actions">
+            <a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a>
+            <a class="btn" data-go="sluzby" href="#sluzby">Služby</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-beige">
+      <div class="wrap">
+        <span class="dot"></span>
+        <div class="pillars">
+          <div class="pillar"><div class="n">I</div><h3>Estetika</h3><p>Precízna práca a cit pre detail pri každej službe.</p></div>
+          <div class="pillar"><div class="n">II</div><h3>Bezpečnosť</h3><p>Kvalitné materiály a sterilné jednorazové nástroje.</p></div>
+          <div class="pillar"><div class="n">III</div><h3>Skúsenosti</h3><p>V salóne krásy pôsobím už od roku 2005.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Čo ponúkam</span><h2>Služby nášho salónu</h2><p>Od permanentného make-upu cez nechty až po pleťovú starostlivosť — všetko na jednom mieste.</p></div>
+        <div class="svc-list">
+          <div class="svc" data-go="sluzby" style="cursor:pointer"><span class="no">01</span><div><h3>Permanentný make-up</h3><p>Obočie technikou PhiBrows či Powder Brows a pery metódou Classy Lips.</p></div><span class="tag">Zobraziť →</span></div>
+          <div class="svc" data-go="sluzby" style="cursor:pointer"><span class="no">02</span><div><h3>Manikúra &amp; pedikúra</h3><p>Modelácia gélových nechtov, gél lak, klasická manikúra aj pedikúra.</p></div><span class="tag">Zobraziť →</span></div>
+          <div class="svc" data-go="sluzby" style="cursor:pointer"><span class="no">03</span><div><h3>Laserové ošetrenia</h3><p>Odstránenie nevyhovujúceho PMU a tetovaní a osviežujúci Carbon peel.</p></div><span class="tag">Zobraziť →</span></div>
+          <div class="svc" data-go="kontakt" style="cursor:pointer"><span class="no">04</span><div><h3>Darčekové poukazy</h3><p>Potešte blízkych poukazom na permanentný make-up či starostlivosť o nechty.</p></div><span class="tag">Napíšte →</span></div>
+        </div>
+        <div style="text-align:center;margin-top:36px"><a class="btn" data-go="sluzby" href="#sluzby">Všetky služby</a></div>
+      </div>
+    </section>
+
+    <!-- RECENZIE (kompaktný pásik na úvode) -->
+    <section class="section-beige">
+      <div class="wrap">
+        <span class="kicker" style="display:block;margin-bottom:6px">Referencie</span>
+        <div class="rmini">
+          <div class="rq"><div class="stars">★★★★★</div><p>„Konečne obočie, ktoré vyzerá úplne prirodzene. Ráno ušetrím kopu času."</p><span>— Martina K.</span></div>
+          <div class="rq"><div class="stars">★★★★★</div><p>„Profesionálka telom aj dušou. Výsledok predčil moje očakávania."</p><span>— Lucia B.</span></div>
+        </div>
+        <p class="pnote" style="margin-top:20px">Hodnotenia spokojných klientok</p>
+        <div style="text-align:center;margin-top:14px"><a class="btn" href="https://share.google/l2OJdri5wWEotfM0E" target="_blank" rel="noopener">Recenzie na Google</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SLUZBY -->
+  <div class="view" id="sluzby">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Služby</span><h2>Zákroky na mieru</h2><p>Každej klientke navrhujem riešenie na mieru. Kliknutím na „Prečítať viac" zobrazíte podrobný popis; ceny nájdete v cenníku.</p></div>
+        <div class="vgrid">
+          <div class="vcard">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 15c4-6 14-6 18-1"/><path d="M6.5 13l-1-2"/><path d="M10.5 11.6l-.6-2.2"/><path d="M14 11.2l.5-2.2"/><path d="M17.6 12.2l1.2-1.9"/></svg></div>
+            <h3>Obočie</h3><span class="tag">PMU · obočie</span>
+            <p class="lead2">Permanentný make-up obočia, ktorý vyzerá úplne prirodzene — podľa vášho typu volíme jemné chĺpky alebo púdrový tieň.</p>
+            <details class="more"><summary>Prečítať viac</summary><div class="more-body">
+              <p>Pred zákrokom si vždy spoločne navrhneme tvar a odtieň na mieru vašej tváre a typu pleti. Pracujem s certifikovanými pigmentmi a sterilnými jednorazovými nástrojmi.</p>
+              <p><strong>Powder Brows</strong> — púdrová technika s jemným, rovnomerným tieňom; ideálna pre mastnejšiu pleť a upravený, no jemný výsledok.</p>
+              <p><strong>Hair Stroke</strong> — realistické jednotlivé chĺpky strojčekom, verne kopírujúce prirodzený rast obočia.</p>
+              <p><strong>Microblading</strong> — manuálne kreslené chĺpky; vhodné najmä pre normálnu až suchšiu pleť.</p>
+              <p><strong>Combi Brows</strong> — kombinácia chĺpkov a púdrového tieňa pre plný, no prirodzený výsledok.</p>
+              <p><strong>Korekcia</strong> — kontrolné doladenie po prvom sedení a neskoršie oživenie pigmentu.</p>
+            </div></details>
+          </div>
+          <div class="vcard">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3 11c3-3 6-3 9 0 3-3 6-3 9 0-2 3.6-6 5-9 5s-7-1.4-9-5z"/><path d="M3 11h18"/></svg></div>
+            <h3>Pery</h3><span class="tag">PMU · pery</span>
+            <p class="lead2">Prirodzené dotvorenie tvaru a farby pier metódou Classy Lips.</p>
+            <details class="more"><summary>Prečítať viac</summary><div class="more-body">
+              <p><strong>Classy Lips</strong> jemne dotvorí kontúru, zjednotí nerovnomernú farbu a perám vráti sviežosť a mladistvý vzhľad.</p>
+              <p>Odtieň volíme tak, aby ladil s vašou prirodzenou farbou — výsledok pôsobí zdravo a plnšie, nikdy nie „namaľovane".</p>
+              <p>Pery prechádzajú niekoľkodňovým hojením; finálny odtieň sa ustáli po pár týždňoch. Súčasťou je konzultácia a prípadná korekcia.</p>
+            </div></details>
+          </div>
+          <div class="vcard">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z"/></svg></div>
+            <h3>Laserové ošetrenia</h3><span class="tag">Laser</span>
+            <p class="lead2">Šetrné laserové odstránenie nevyhovujúceho PMU a menších tetovaní, plus osviežujúci Carbon peel.</p>
+            <details class="more"><summary>Prečítať viac</summary><div class="more-body">
+              <p><strong>Odstránenie PMU</strong> — laserom postupne rozrušujeme a odstraňujeme starý pigment, vo viacerých sedeniach s odstupom.</p>
+              <p><strong>Odstránenie menších tetovaní</strong> — počet sedení aj cena závisia od veľkosti, farby a hĺbky; zhodnotíme pri konzultácii.</p>
+              <p><strong>Carbon peel</strong> — uhlíková maska a laser vyhladia a rozjasnia pleť, zjednotia tón a zmenšia rozšírené póry.</p>
+            </div></details>
+          </div>
+          <div class="vcard">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M10 3h4v2.5h-4z"/><path d="M9.5 8.5c0-1.6 1-3 2.5-3s2.5 1.4 2.5 3v8.5a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M9.5 12h5"/></svg></div>
+            <h3>Manikúra</h3><span class="tag">Nechty</span>
+            <p class="lead2">Precízna starostlivosť o ruky a nechty — od klasickej manikúry po modeláciu gélom.</p>
+            <details class="more"><summary>Prečítať viac</summary><div class="more-body">
+              <p><strong>Modelácia gélových nechtov</strong> — pevné, prirodzene vyzerajúce nechty vrátane úpravy tvaru a dĺžky.</p>
+              <p><strong>Gél lak s kaučukovou bázou</strong> — trvácny lak so spevňujúcou bázou, ktorá chráni váš vlastný necht.</p>
+              <p><strong>Klasická a pánska manikúra</strong> — úprava tvaru, ošetrenie nechtovej kožičky a starostlivosť o ruky.</p>
+              <p>K dispozícii je aj <strong>zdobenie</strong>, <strong>oprava</strong> nechtov a šetrné <strong>odstránenie</strong> starého gélu.</p>
+            </div></details>
+          </div>
+          <div class="vcard">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M9 4C6.5 4 5 6.5 5 10c0 2.5 1 4 1 6.5 0 2 1.5 3.2 3.5 3.2s3-1.6 3-3.6c0-2 .6-3 .6-5.1"/><circle cx="15.5" cy="6" r="1"/><circle cx="17.6" cy="8.6" r="1"/><circle cx="18.2" cy="11.6" r="1"/></svg></div>
+            <h3>Pedikúra</h3><span class="tag">Nechty</span>
+            <p class="lead2">Starostlivosť o nohy v príjemnom prostredí — mokrá aj suchá pedikúra a modelácia.</p>
+            <details class="more"><summary>Prečítať viac</summary><div class="more-body">
+              <p><strong>Mokrá pedikúra</strong> — klasická pedikúra s kúpeľom; zmäkčí pokožku, upraví nechty a odstráni zrohovatenú kožu.</p>
+              <p><strong>Suchá (prístrojová) pedikúra</strong> — ošetrenie bez namáčania, precízne a šetrné, vhodné aj pre citlivejšie nohy.</p>
+              <p><strong>Modelácia nechtov na nohách</strong> — spevnenie a úprava gélom pre dlhotrvajúci upravený vzhľad.</p>
+            </div></details>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:clamp(40px,6vw,64px);display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a>
+          <a class="btn" data-go="cennik" href="#cennik">Pozrieť cenník</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-beige">
+      <div class="wrap">
+        <div class="head"><span class="kicker">Časté otázky</span><h2>Čo vás najčastejšie zaujíma</h2></div>
+        <div class="faq">
+          <details class="q" open><summary>Bolí zákrok?</summary><p>Pred aj počas zákroku používam znecitlivenie, takže väčšina klientok cíti len mierny tlak. Vnímanie je individuálne, ale zákrok je celkovo dobre znesiteľný.</p></details>
+          <details class="q"><summary>Ako dlho permanentný make-up vydrží?</summary><p>Spravidla 12 – 18 mesiacov v závislosti od typu pleti, životného štýlu a starostlivosti. Následne sa odporúča obnova, ktorá udrží výsledok svieži.</p></details>
+          <details class="q"><summary>Ako prebieha prvé sedenie?</summary><p>Začíname konzultáciou a spoločným návrhom tvaru a odtieňa. Nasleduje samotný zákrok a po približne 4 – 8 týždňoch kontrolné sedenie, kde výsledok doladíme.</p></details>
+          <details class="q"><summary>Pre koho nie je zákrok vhodný?</summary><p>Počas tehotenstva a dojčenia, pri niektorých ochoreniach či užívaní určitých liekov zákrok neodporúčam. V prípade pochybností sa vopred poraďte so mnou alebo lekárom.</p></details>
+          <details class="q"><summary>Ako sa objednám?</summary><p>Najjednoduchšie online cez rezervačný systém, prípadne telefonicky. Termín si vyberiete podľa aktuálnej dostupnosti.</p></details>
+        </div>
+
+        <div class="care">
+          <h3>Starostlivosť po zákroku</h3>
+          <div class="care-list">
+            <div class="care-step"><span class="cn">1</span><p><strong>Udržujte čistotu a sucho</strong>Prvé dni sa ošetrenej oblasti nedotýkajte a udržujte ju čistú a suchú.</p></div>
+            <div class="care-step"><span class="cn">2</span><p><strong>Aplikujte odporúčaný krém</strong>Podľa pokynov nanášajte tenkú vrstvu odporúčaného prípravku.</p></div>
+            <div class="care-step"><span class="cn">3</span><p><strong>Chráňte pred slnkom a vodou</strong>Vyhnite sa saune, bazénu, soláriu a priamemu slnku približne dva týždne.</p></div>
+            <div class="care-step"><span class="cn">4</span><p><strong>Neodlupujte kožu</strong>Odlupujúcu sa kožu nechajte odpadnúť samú — inak hrozí nerovnomerný výsledok.</p></div>
+          </div>
+          <p class="pnote" style="text-align:center">Kompletné písomné pokyny dostanete od nás po zákroku. Plný výsledok sa ustáli po 4 – 6 týždňoch.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- KURZY -->
+  <div class="view" id="kurzy">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Vzdelávanie</span><h2>Kurzy — pripravujeme</h2><p>Kurzy permanentného make-upu pre začiatočníčky aj pokročilé práve pripravujem. Zanechajte mi kontakt a ozvem sa vám hneď, ako otvorím prihlasovanie.</p></div>
+        <p class="pnote" style="text-align:center;max-width:600px;margin:0 auto 28px">Čo vás čaká: teória, hygiena a bezpečnosť · praktický nácvik na modeloch · podpora aj po kurze.</p>
+        <div style="text-align:center"><a class="btn gold" data-go="kontakt" href="#kontakt">Mám záujem o kurz</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CENNIK -->
+  <div class="view" id="cennik">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Cenník</span><h2>Prehľadné ceny</h2></div>
+        <div class="price">
+          <div class="price-group">
+            <h3>Permanentný make-up</h3>
+            <div class="prow"><div class="l">Powder Brows<small>Púdrové obočie — strojčeková technika</small></div><div class="r">200 €</div></div>
+            <div class="prow"><div class="l">Hair Stroke<small>Realistické chĺpky — strojčeková technika</small></div><div class="r">200 €</div></div>
+            <div class="prow"><div class="l">Combi Brows<small>Spojenie techník powder + hair stroke</small></div><div class="r">230 €</div></div>
+            <div class="prow"><div class="l">Microblading<small>Manuálne tetovanie chĺpkov</small></div><div class="r">200 €</div></div>
+            <div class="prow"><div class="l">Classy Lips<small>Permanentný make-up pier</small></div><div class="r">200 €</div></div>
+            <div class="prow"><div class="l">Cartridge<small>Jednorazová ihla</small></div><div class="r">30 €</div></div>
+            <div class="prow"><div class="l">Korekcia do 3 mesiacov<small>Od 1. sedenia</small></div><div class="r">30 €</div></div>
+            <div class="prow"><div class="l">Korekcia do 6 mesiacov<small>Od 1. sedenia</small></div><div class="r">60 €</div></div>
+            <div class="prow"><div class="l">Korekcia do 1 roka<small>Oživenie pigmentu</small></div><div class="r">100 €</div></div>
+          </div>
+          <div class="price-group">
+            <h3>Laser</h3>
+            <div class="prow"><div class="l">Odstránenie permanentného make-upu</div><div class="r">45 €</div></div>
+            <div class="prow"><div class="l">Odstránenie tetovania<small>Podľa rozsahu tetovania</small></div><div class="r">50 – 200 €</div></div>
+            <div class="prow"><div class="l">Carbon peel<small>Ošetrenie tváre — maska + laser</small></div><div class="r">45 €</div></div>
+          </div>
+          <div class="price-group">
+            <h3>Manikúra</h3>
+            <div class="prow"><div class="l">Modelácia gélových nechtov</div><div class="r">50 €</div></div>
+            <div class="prow"><div class="l">Gél lak modelácia / kaučuková báza</div><div class="r">35 €</div></div>
+            <div class="prow"><div class="l">Klasická / pánska manikúra</div><div class="r">25 €</div></div>
+            <div class="prow"><div class="l">Zdobenie / každá ďalšia začatá hodina</div><div class="r">25 €</div></div>
+            <div class="prow"><div class="l">Oprava 1 nechtu</div><div class="r">35 €</div></div>
+            <div class="prow"><div class="l">Oprava 1 nechtu pri dopĺňaní</div><div class="r">3,50 €</div></div>
+            <div class="prow"><div class="l">Odstránenie gélových nechtov</div><div class="r">20 €</div></div>
+            <div class="prow"><div class="l">Odstránenie gélových nechtov — iný salón</div><div class="r">30 €</div></div>
+          </div>
+          <div class="price-group">
+            <h3>Pedikúra</h3>
+            <div class="prow"><div class="l">Mokrá pedikúra</div><div class="r">20 €</div></div>
+            <div class="prow"><div class="l">Suchá pedikúra</div><div class="r">20 €</div></div>
+            <div class="prow"><div class="l">Modelácia gélových nechtov<small>Nohy</small></div><div class="r">30 €</div></div>
+          </div>
+          <div class="price-group">
+            <h3>Vzdelávanie</h3>
+            <div class="prow"><div class="l">Kurz permanentného make-upu<small>Pripravujeme — termíny čoskoro</small></div><div class="r">pripravujeme</div></div>
+          </div>
+        </div>
+        <p class="pnote">Ceny sú orientačné, finálnu cenu potvrdíme pri konzultácii. Rezervovať termín môžete online alebo telefonicky.</p>
+        <div style="text-align:center;margin-top:24px"><a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- GALERIA -->
+  <div class="view" id="galeria">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Fotogaléria</span><h2>Výsledky</h2></div>
+        <h3 class="gal-sub">Permanentný make-up</h3>
+        <div class="gal">
+          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/g1.webp" alt="PhiBrows — detail chĺpkov"><span class="lab">Obočie · PhiBrows</span></div></div>
+          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/obocie1.jpg" alt="Obočie — výsledok"><span class="lab">Obočie</span></div></div>
+          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/obocie2.jpg" alt="Obočie — výsledok"><span class="lab">Obočie</span></div></div>
+          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/g4.jpg" alt="Výsledok — obočie"><span class="lab">Výsledok</span></div></div>
+          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/g5.jpg" alt="Výsledok — obočie"><span class="lab">Výsledok</span></div></div>
+          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/g2.jpg" alt="Výsledok — pery a tvár"><span class="lab">Pery</span></div></div>
+        </div>
+        <h3 class="gal-sub">Nechty</h3>
+        <div class="gal">
+          <div class="frame"><div class="ph square"><video src="{{ theme_url }}/images/nechty-vid1.mp4" autoplay muted loop playsinline></video><span class="lab">Video</span></div></div>
+          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/nechty1.jpg" alt="Nechty — modelácia"><span class="lab">Nechty</span></div></div>
+          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/nechty2.jpg" alt="Nechty — modelácia"><span class="lab">Nechty</span></div></div>
+          <div class="frame"><div class="ph square"><video src="{{ theme_url }}/images/nechty-vid2.mp4" autoplay muted loop playsinline></video><span class="lab">Video</span></div></div>
+          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/nechty3.jpg" alt="Nechty — modelácia"><span class="lab">Nechty</span></div></div>
+          <div class="frame"><div class="ph square"><img src="{{ theme_url }}/images/nechty4.jpg" alt="Nechty — modelácia"><span class="lab">Nechty</span></div></div>
+        </div>
+        <p class="pnote">Aktuálne práce nájdete na Instagrame <a href="https://www.instagram.com/veronikatoth_phibrows/" target="_blank" rel="noopener"><strong>@veronikatoth_phibrows</strong></a>.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- KONTAKT -->
+  <div class="view" id="kontakt">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Kontakt</span><h2>Objednajte sa</h2></div>
+        <div class="contact">
+          <div class="cinfo">
+            <div class="r"><div class="k">Adresa</div><div class="v">Pražská 11, Nitra<small>Slovensko</small></div></div>
+            <div class="r"><div class="k">Telefón</div><div class="v"><a href="tel:+421903810610">+421 903 810 610</a></div></div>
+            <div class="r"><div class="k">E-mail</div><div class="v"><a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a></div></div>
+            <div class="r"><div class="k">Instagram</div><div class="v"><a href="https://www.instagram.com/veronikatoth_phibrows/" target="_blank" rel="noopener">@veronikatoth_phibrows</a></div></div>
+            <div class="r"><div class="k">Objednávky</div><div class="v">Len na objednávku<small>Každý deň · termín zrušte min. 24 h vopred</small></div></div>
+            <div class="r"><div class="k">Storno</div><div class="v">Termín zrušte prosím min. 24 h vopred<small>Pri neskoršom zrušení môže byť účtovaný poplatok</small></div></div>
+            <div class="book"><a class="btn gold" href="https://booqme.app/sk/rezervacia/veronika-tothova" target="_blank" rel="noopener">Objednať sa online</a></div>
+          </div>
+          <form class="cform">
+            <div><label for="c-name">Meno</label><input id="c-name" name="name" type="text" required></div>
+            <div><label for="c-phone">Telefón</label><input id="c-phone" name="phone" type="tel"></div>
+            <div><label for="c-msg">Správa</label><textarea id="c-msg" name="message" rows="4"></textarea></div>
+            <button class="btn gold" type="submit">Odoslať dopyt</button>
+          </form>
+        </div>
+        <div class="map-embed" id="mapBox">
+          <div class="map-ph" id="mapPh"><p>Mapa sa načíta z Google Máp. Načítaním súhlasíte so spracovaním podľa <a data-go="ochrana-udajov" href="#ochrana-udajov">ochrany osobných údajov</a>.</p><button type="button" class="btn gold map-load">Zobraziť mapu</button></div>
+          <iframe title="Mapa — Pražská 11, Nitra" data-src="https://www.google.com/maps?q=Pra%C5%BEsk%C3%A1%2011%2C%20Nitra&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- OCHRANA OSOBNYCH UDAJOV -->
+  <div class="view" id="ochrana-udajov">
+    <section>
+      <div class="wrap">
+        <div class="head"><span class="kicker">Právne</span><h2>Ochrana osobných údajov</h2></div>
+        <div class="legal">
+          <div class="note">Poznámka pre klientku: doplňte údaje prevádzkovateľa (obchodné meno, sídlo, IČO) — sú označené [...].</div>
+
+          <h3>Prevádzkovateľ</h3>
+          <p>[Obchodné meno], [sídlo / adresa prevádzky], IČO: [IČO]. Kontakt: <a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a>, +421 903 810 610.</p>
+
+          <h3>Aké údaje spracúvame</h3>
+          <p>Spracúvame údaje, ktoré nám poskytnete pri objednaní termínu alebo v kontaktnom formulári — meno, telefónne číslo, e-mail a obsah vašej správy. V súvislosti so zákrokmi môžeme viesť aj nevyhnutné údaje o poskytnutej službe.</p>
+
+          <h3>Účel a právny základ</h3>
+          <ul>
+            <li>vybavenie objednávky a komunikácia s vami (plnenie zmluvy, resp. opatrenia pred jej uzavretím),</li>
+            <li>odpoveď na dopyt z kontaktného formulára (oprávnený záujem),</li>
+            <li>plnenie zákonných povinností (napr. účtovníctvo).</li>
+          </ul>
+
+          <h3>Doba uchovávania</h3>
+          <p>Osobné údaje uchovávame len po dobu nevyhnutnú na daný účel, prípadne po dobu stanovenú príslušnými právnymi predpismi.</p>
+
+          <h3>Príjemcovia a tretie strany</h3>
+          <p>Na prevádzku webu a poskytovanie služieb využívame: rezervačný systém <strong>booqme</strong> (spracovanie objednávok), <strong>Google Maps</strong> (zobrazenie mapy), poskytovateľa <strong>hostingu a e-mailu</strong>. Tieto subjekty spracúvajú údaje ako sprostredkovatelia v nevyhnutnom rozsahu.</p>
+
+          <h3>Cookies</h3>
+          <p>Web používa nevyhnutné cookies potrebné pre svoje fungovanie. Obsah tretích strán (Google Mapy, prípadne Google recenzie) sa načíta až po vašom súhlase v cookie lište. Svoje rozhodnutie môžete kedykoľvek zmeniť vymazaním údajov prehliadača pre túto stránku.</p>
+
+          <h3>Vaše práva</h3>
+          <p>Máte právo na prístup k svojim údajom, ich opravu, výmaz, obmedzenie spracúvania, prenosnosť a právo namietať proti spracúvaniu. Máte tiež právo podať sťažnosť na <strong>Úrad na ochranu osobných údajov Slovenskej republiky</strong>.</p>
+
+          <h3>Kontakt</h3>
+          <p>V otázkach ochrany osobných údajov nás kontaktujte na <a href="mailto:pmutoth@gmail.com">pmutoth@gmail.com</a>.</p>
+
+          <p class="pnote">Tento dokument je informatívny vzor. Pred spustením webu odporúčame jeho znenie prispôsobiť reálnemu rozsahu spracúvania údajov.</p>
+        </div>
+        <div style="text-align:center;margin-top:36px"><a class="btn" data-go="uvod" href="#uvod">Späť na úvod</a></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="lb" id="lightbox" hidden>
+  <button class="lb-close" id="lbClose" aria-label="Zavrieť">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Predchádzajúce">&lsaquo;</button>
+  <div class="lb-stage" id="lbStage"></div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Ďalšie">&rsaquo;</button>
+</div>
+
+<div class="cookiebar" id="cookiebar" hidden>
+  <p>Táto stránka používa nevyhnutné cookies a po vašom súhlase aj obsah tretích strán (Google Mapy). Viac v <a data-go="ochrana-udajov" href="#ochrana-udajov">ochrane osobných údajov</a>.</p>
+  <div class="cb-actions">
+    <button id="cbDecline">Len nevyhnutné</button>
+    <button class="acc" id="cbAccept">Prijať všetko</button>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <img class="foot-logo" src="{{ theme_url }}/images/logo-white.png" alt="Veronika Tóth — permanent make-up" data-go="uvod">
+    <nav>
+      <button data-go="sluzby">Služby</button><button data-go="kurzy">Kurzy</button><button data-go="cennik">Cenník</button><button data-go="galeria">Galéria</button><button data-go="kontakt">Kontakt</button>
+    </nav>
+    <a class="foot-ig" href="https://www.instagram.com/veronikatoth_phibrows/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg> @veronikatoth_phibrows</a>
+    <div class="fb">© <span id="year"></span> Veronika Tóth · Pražská 11, Nitra · +421 903 810 610</div>
+    <div class="fb" style="margin-top:6px"><button data-go="ochrana-udajov" style="background:none;border:0;color:rgba(255,255,255,.55);cursor:pointer;font-family:var(--body);font-size:12px;letter-spacing:.04em;text-decoration:underline">Ochrana osobných údajov</button> · IČO: [doplniť]</div>
+  </div>
+</footer>
+
+<script src="{{ theme_url }}/js/app.js"></script>
